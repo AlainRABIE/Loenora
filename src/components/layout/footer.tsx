@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Github, Twitter, Linkedin } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 const socialLinks = [
   { icon: <Twitter className="h-5 w-5" />, href: "#", name: "Twitter" },
@@ -13,11 +13,12 @@ const socialLinks = [
 
 export default function Footer() {
   const t = useTranslations('Footer');
+  const locale = useLocale();
 
   const footerLinks = {
     shop: [
       { title: t('allProducts'), href: "/products" },
-      { title: t('apparel'), href: "#" },
+      { title: t('apparel'), href: "/products" },
     ],
     support: [
       { title: t('contactUs'), href: "#" },
@@ -56,7 +57,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {footerLinks.shop.map(link => (
                   <li key={link.title}>
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <Link href={link.href} locale={locale} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                       {link.title}
                     </Link>
                   </li>
@@ -68,7 +69,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {footerLinks.support.map(link => (
                   <li key={link.title}>
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <Link href={link.href} locale={locale} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                       {link.title}
                     </Link>
                   </li>
@@ -80,7 +81,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {footerLinks.company.map(link => (
                   <li key={link.title}>
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <Link href={link.href} locale={locale} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                       {link.title}
                     </Link>
                   </li>

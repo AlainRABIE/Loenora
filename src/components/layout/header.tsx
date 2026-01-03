@@ -26,7 +26,7 @@ import {
 
 const navLinks = [
   { href: "/products", labelKey: "allProducts" },
-  { href: "#", labelKey: "apparel" },
+  { href: "/products", labelKey: "apparel" },
 ];
 
 function LanguageSwitcher() {
@@ -36,8 +36,9 @@ function LanguageSwitcher() {
     const pathname = usePathname();
 
     const handleLocaleChange = (newLocale: string) => {
-      const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
-      router.replace(newPath);
+      // This will replace the current path with the new locale
+      // e.g., /en/about -> /fr/about
+      router.replace(pathname, { locale: newLocale });
     };
 
     return (
@@ -66,6 +67,7 @@ function LanguageSwitcher() {
 export default function Header() {
   const { totalItems } = useCart();
   const t = useTranslations('Header');
+  const locale = useLocale();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -76,6 +78,7 @@ export default function Header() {
             <Link
               key={link.labelKey}
               href={link.href}
+              locale={locale}
               className="text-foreground/60 transition-colors hover:text-foreground/80"
             >
               {t(link.labelKey as any)}
@@ -83,6 +86,7 @@ export default function Header() {
           ))}
           <Link
             href="/admin/orders"
+            locale={locale}
             className="text-accent/80 transition-colors hover:text-accent"
           >
             {t('adminPanel')}
@@ -100,7 +104,7 @@ export default function Header() {
             </Button>
           </div>
           <div className="flex items-center gap-2">
-            <Link href="/login">
+            <Link href="/login" locale={locale}>
                 <Button size="icon" variant="ghost" asChild={false}>
                     <User className="h-5 w-5" />
                     <span className="sr-only">{t('myAccount')}</span>
@@ -141,6 +145,7 @@ export default function Header() {
                     <Link
                       key={link.labelKey}
                       href={link.href}
+                      locale={locale}
                       className="text-foreground/80 transition-colors hover:text-foreground"
                     >
                       {t(link.labelKey as any)}
@@ -148,6 +153,7 @@ export default function Header() {
                   ))}
                    <Link
                     href="/admin/orders"
+                    locale={locale}
                     className="text-accent/80 transition-colors hover:text-accent"
                   >
                     {t('adminPanel')}
