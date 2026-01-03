@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Search, ShoppingCart, User, Menu } from "lucide-react";
+import { Search, ShoppingCart, User, Menu, Globe } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,12 @@ import {
 import Logo from "../logo";
 import { useCart } from "@/context/cart-context";
 import CartSheet from "../cart-sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const navLinks = [
   { href: "/products", label: "All Products" },
@@ -22,6 +28,27 @@ const navLinks = [
   { href: "#", label: "Apparel" },
   { href: "#", label: "Home Goods" },
 ];
+
+function LanguageSwitcher() {
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="icon">
+            <Globe className="h-5 w-5" />
+            <span className="sr-only">Changer de langue</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem>
+            Français
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            English
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    )
+  }
 
 export default function Header() {
   const { totalItems } = useCart();
@@ -65,6 +92,7 @@ export default function Header() {
                 <span className="sr-only">My Account</span>
               </Link>
             </Button>
+            <LanguageSwitcher />
             <Sheet>
               <SheetTrigger asChild>
                 <Button size="icon" variant="ghost" className="relative">
