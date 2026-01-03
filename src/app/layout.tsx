@@ -4,6 +4,8 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import { CartProvider } from "@/context/cart-context";
+import { ReactNode } from "react";
+import { NextIntlClientProvider, useMessages } from 'next-intl';
 
 const fontBody = Inter({ subsets: ["latin"], variable: "--font-body" });
 const fontHeadline = Space_Grotesk({ subsets: ["latin"], variable: "--font-headline" });
@@ -14,13 +16,19 @@ export const metadata: Metadata = {
   description: "Styliste modéliste : Nour.Rabie",
 };
 
+type Props = {
+  children: ReactNode;
+  params: { locale: string };
+};
+
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  params: { locale }
+}: Readonly<Props>) {
+  const messages = useMessages();
+
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -34,12 +42,14 @@ export default function RootLayout({
           fontCursive.variable
         )}
       >
-        <CartProvider>
-            <div className="relative flex min-h-dvh flex-col bg-background">
-              {children}
-            </div>
-            <Toaster />
-        </CartProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <CartProvider>
+              <div className="relative flex min-h-dvh flex-col bg-background">
+                {children}
+              </div>
+              <Toaster />
+          </CartProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
