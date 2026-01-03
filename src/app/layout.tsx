@@ -11,8 +11,8 @@ const fontBody = Inter({ subsets: ["latin"], variable: "--font-body" });
 const fontHeadline = Space_Grotesk({ subsets: ["latin"], variable: "--font-headline" });
 
 export const metadata: Metadata = {
-  title: "ChicShop",
-  description: "La destination mode pour un style impeccable.",
+  title: "loenora",
+  description: "Styliste modéliste : Nour.Rabie",
 };
 
 export default function RootLayout({
