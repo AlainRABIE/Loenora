@@ -1,3 +1,82 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-image",
+      "description": "A stylish person in a modern outfit",
+      "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwbW9kZWx8ZW58MHx8fHwxNzY3MzgwNzM1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fashion model"
+    },
+    {
+      "id": "product-1",
+      "description": "A modern, sleek smartwatch on a neutral background.",
+      "imageUrl": "https://images.unsplash.com/photo-1706289835536-3aa7b81aa2fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzbWFydHdhdGNoJTIwcHJvZHVjdHxlbnwwfHx8fDE3Njc0MTY2MTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "smartwatch product"
+    },
+    {
+      "id": "product-2",
+      "description": "High-quality wireless headphones.",
+      "imageUrl": "https://images.unsplash.com/photo-1667597366964-99fc56754b81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoZWFkcGhvbmVzJTIwcHJvZHVjdHxlbnwwfHx8fDE3Njc0MjgzNzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "headphones product"
+    },
+    {
+      "id": "product-3",
+      "description": "A stylish and durable backpack for everyday use.",
+      "imageUrl": "https://images.unsplash.com/photo-1557587136-b627c2d6e938?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YmFja3BhY2slMjBwcm9kdWN0fGVufDB8fHx8MTc2NzQ2ODIzMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "backpack product"
+    },
+    {
+      "id": "product-4",
+      "description": "A comfortable and modern hoodie.",
+      "imageUrl": "https://images.unsplash.com/photo-1594308482008-40c1396b4dff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxob29kaWUlMjBhcHBhcmVsfGVufDB8fHx8MTc2NzQ2ODIzMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hoodie apparel"
+    },
+    {
+      "id": "product-5",
+      "description": "A pair of classic sneakers.",
+      "imageUrl": "https://images.unsplash.com/photo-1734956093501-811018732398?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c25lYWtlcnMlMjBzaG9lc3xlbnwwfHx8fDE3Njc0MjgzNzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sneakers shoes"
+    },
+    {
+      "id": "product-6",
+      "description": "A minimalist ceramic coffee mug.",
+      "imageUrl": "https://images.unsplash.com/photo-1616241673111-508b4662c707?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb2ZmZWUlMjBtdWd8ZW58MHx8fHwxNzY3NDI4MzcwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "coffee mug"
+    },
+    {
+      "id": "product-7",
+      "description": "A set of smart home lighting bulbs.",
+      "imageUrl": "https://images.unsplash.com/photo-1614696131965-cc559b1ecad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzbWFydCUyMGxpZ2h0aW5nfGVufDB8fHx8MTc2NzQ2ODIzMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "smart lighting"
+    },
+    {
+      "id": "product-8",
+      "description": "A portable bluetooth speaker.",
+      "imageUrl": "https://images.unsplash.com/photo-1507878566509-a0dbe19677a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Ymx1ZXRvb3RoJTIwc3BlYWtlcnxlbnwwfHx8fDE3Njc0MzEyMDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bluetooth speaker"
+    },
+    {
+      "id": "product-9",
+      "description": "A leather-bound journal and a pen.",
+      "imageUrl": "https://images.unsplash.com/photo-1611473444578-f0c395db4a65?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxqb3VybmFsJTIwbm90ZWJvb2t8ZW58MHx8fHwxNzY3NDQ3NzQ0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "journal notebook"
+    },
+    {
+      "id": "product-10",
+      "description": "A modern ergonomic office chair.",
+      "imageUrl": "https://images.unsplash.com/photo-1681418659069-eef28d44aeab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxvZmZpY2UlMjBjaGFpcnxlbnwwfHx8fDE3NjczNzQ2NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "office chair"
+    },
+    {
+      "id": "product-11",
+      "description": "A high-performance gaming mouse.",
+      "imageUrl": "https://images.unsplash.com/photo-1629429408708-3a59f51979c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Z2FtaW5nJTIwbW91c2V8ZW58MHx8fHwxNzY3NDAxODIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "gaming mouse"
+    },
+    {
+      "id": "product-12",
+      "description": "A designer pair of sunglasses.",
+      "imageUrl": "https://images.unsplash.com/photo-1732615840503-4a09161c671d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzdW5nbGFzc2VzJTIwZmFzaGlvbnxlbnwwfHx8fDE3Njc0NDgxNjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sunglasses fashion"
+    }
+  ]
 }

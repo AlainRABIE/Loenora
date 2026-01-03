@@ -1,0 +1,56 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { type Product } from "@/lib/types";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useCart } from "@/context/cart-context";
+import { ShoppingCart } from "lucide-react";
+
+interface ProductCardProps {
+  product: Product;
+}
+
+export default function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCart();
+  const image = PlaceHolderImages.find(img => img.id === product.imageId);
+
+  return (
+    <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg">
+      <Link href={`/products/${product.slug}`} className="group">
+        <CardHeader className="p-0">
+          <div className="relative h-60 w-full overflow-hidden">
+            {image && (
+                <Image
+                    src={image.imageUrl}
+                    alt={product.name}
+                    data-ai-hint={image.imageHint}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+            )}
+          </div>
+        </CardHeader>
+        <CardContent className="p-4 flex-1">
+          <CardTitle className="text-lg font-semibold leading-tight mb-1 truncate group-hover:text-primary">
+            {product.name}
+          </CardTitle>
+          <CardDescription className="text-sm text-muted-foreground">{product.category}</CardDescription>
+        </CardContent>
+      </Link>
+      <CardFooter className="p-4 pt-0 flex justify-between items-center">
+        <p className="text-lg font-bold text-primary">${product.price.toFixed(2)}</p>
+        <Button 
+          variant="outline" 
+          size="sm"
+          onClick={() => addToCart(product.id, 1)}
+        >
+          <ShoppingCart className="mr-2 h-4 w-4" />
+          Add to Cart
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
