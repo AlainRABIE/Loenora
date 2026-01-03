@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Star, Truck, ShieldCheck, ShoppingCart } from "lucide-react";
 import ProductCard from "@/components/product-card";
 import AddToCartButton from "./add-to-cart-button";
-import AIRecommendations from "@/components/ai-recommendations";
 
 export function generateStaticParams() {
   return products.map((product) => ({
@@ -22,6 +21,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
   }
 
   const image = PlaceHolderImages.find((img) => img.id === product.imageId);
+  const relatedProducts = products.filter(p => p.id !== product.id);
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -76,7 +76,12 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
       </div>
       
       <div className="mt-20">
-        <AIRecommendations currentProductId={product.id} />
+        <h2 className="text-3xl font-bold text-center mb-10">Vous pourriez aussi aimer</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {relatedProducts.map((p) => (
+                <ProductCard key={p.id} product={p} />
+            ))}
+        </div>
       </div>
     </div>
   );
