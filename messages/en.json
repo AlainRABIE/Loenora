@@ -2,9 +2,7 @@
 {
     "Header": {
         "allProducts": "All Products",
-        "electronics": "Electronics",
         "apparel": "Apparel",
-        "homeGoods": "Home Goods",
         "adminPanel": "Admin Panel",
         "searchPlaceholder": "Search products...",
         "myAccount": "My Account",
@@ -21,9 +19,7 @@
         "subscribe": "Subscribe",
         "shop": "Shop",
         "allProducts": "All Products",
-        "electronics": "Electronics",
         "apparel": "Apparel",
-        "homeGoods": "Home Goods",
         "support": "Support",
         "contactUs": "Contact Us",
         "faq": "FAQ",

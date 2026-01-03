@@ -2,9 +2,7 @@
 {
     "Header": {
         "allProducts": "المنتجات الكل",
-        "electronics": "إلكترونيات",
         "apparel": "الملابس",
-        "homeGoods": "مستلزمات المنزل",
         "adminPanel": "لوحة التحكم",
         "searchPlaceholder": "البحث عن المنتجات...",
         "myAccount": "حسابي",
@@ -21,9 +19,7 @@
         "subscribe": "اشتراك",
         "shop": "المتجر",
         "allProducts": "جميع المنتجات",
-        "electronics": "إلكترونيات",
         "apparel": "ملابس",
-        "homeGoods": "أدوات منزلية",
         "support": "الدعم",
         "contactUs": "اتصل بنا",
         "faq": "الأسئلة الشائعة",

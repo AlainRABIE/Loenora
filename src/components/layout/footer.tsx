@@ -17,9 +17,7 @@ export default function Footer() {
   const footerLinks = {
     shop: [
       { title: t('allProducts'), href: "/products" },
-      { title: t('electronics'), href: "#" },
       { title: t('apparel'), href: "#" },
-      { title: t('homeGoods'), href: "#" },
     ],
     support: [
       { title: t('contactUs'), href: "#" },

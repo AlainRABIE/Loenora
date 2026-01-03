@@ -2,9 +2,7 @@
 {
     "Header": {
         "allProducts": "Tous les produits",
-        "electronics": "Électronique",
         "apparel": "Vêtements",
-        "homeGoods": "Articles pour la maison",
         "adminPanel": "Panneau d'administration",
         "searchPlaceholder": "Rechercher des produits...",
         "myAccount": "Mon compte",
@@ -21,9 +19,7 @@
         "subscribe": "S'abonner",
         "shop": "Boutique",
         "allProducts": "Tous les produits",
-        "electronics": "Électronique",
         "apparel": "Vêtements",
-        "homeGoods": "Articles pour la maison",
         "support": "Support",
         "contactUs": "Contactez-nous",
         "faq": "FAQ",

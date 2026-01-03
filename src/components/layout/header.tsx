@@ -26,9 +26,7 @@ import {
 
 const navLinks = [
   { href: "/products", labelKey: "allProducts" },
-  { href: "#", labelKey: "electronics" },
   { href: "#", labelKey: "apparel" },
-  { href: "#", labelKey: "homeGoods" },
 ];
 
 function LanguageSwitcher() {
