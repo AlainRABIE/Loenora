@@ -16,16 +16,14 @@ export const metadata: Metadata = {
 
 type Props = {
   children: ReactNode;
-  params: { locale: string };
 };
 
 export default function RootLayout({
   children,
-  params: { locale }
 }: Readonly<Props>) {
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
