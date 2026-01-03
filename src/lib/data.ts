@@ -3,111 +3,111 @@ import type { Product, Order } from './types';
 export const products: Product[] = [
   {
     id: 'prod_1',
-    name: 'Aether-Watch Pro',
-    description: 'Experience the future on your wrist. With a stunning edge-to-edge display and a suite of health sensors, the Aether-Watch Pro is your ultimate daily companion. Tracks everything from your heart rate to your sleep patterns.',
-    price: 399.99,
-    category: 'Electronics',
+    name: 'Blouse en Soie "Aria"',
+    description: 'Une blouse en soie luxueuse avec une coupe fluide et des détails de volants délicats. Parfaite pour une journée au bureau ou une soirée élégante.',
+    price: 129.99,
+    category: 'Tops',
     imageId: 'product-1',
-    slug: 'aether-watch-pro'
+    slug: 'blouse-soie-aria'
   },
   {
     id: 'prod_2',
-    name: 'SonicWave Headphones',
-    description: 'Immerse yourself in pure, high-fidelity sound. The SonicWave headphones feature active noise cancellation, a 30-hour battery life, and a crystal-clear microphone for calls. Perfect for music lovers and professionals alike.',
-    price: 249.99,
-    category: 'Electronics',
+    name: 'Jean Skinny "Leo"',
+    description: 'Notre jean skinny le plus vendu, conçu pour épouser et flatter vos formes. Fabriqué à partir d\'un denim stretch de première qualité pour un confort qui dure toute la journée.',
+    price: 89.99,
+    category: 'Pantalons',
     imageId: 'product-2',
-    slug: 'sonicwave-headphones'
+    slug: 'jean-skinny-leo'
   },
   {
     id: 'prod_3',
-    name: 'Nomad Urban Backpack',
-    description: 'The perfect blend of style and function. The Nomad Urban Backpack is crafted from water-resistant materials, featuring multiple compartments, a padded laptop sleeve, and an anti-theft pocket. Your ideal partner for city adventures.',
-    price: 129.99,
-    category: 'Apparel',
+    name: 'Sac à Main "Stella"',
+    description: 'Le compagnon idéal pour toutes les occasions. Le sac Stella est fabriqué en cuir végétalien souple et dispose de plusieurs compartiments pour garder vos essentiels organisés.',
+    price: 149.99,
+    category: 'Accessoires',
     imageId: 'product-3',
-    slug: 'nomad-urban-backpack'
+    slug: 'sac-main-stella'
   },
   {
     id: 'prod_4',
-    name: 'Zenith Tech-Fleece',
-    description: 'Stay warm without the bulk. The Zenith Tech-Fleece is made from a revolutionary lightweight fabric that provides exceptional warmth and breathability. Its modern, athletic cut ensures you look sharp and feel comfortable.',
-    price: 89.99,
-    category: 'Apparel',
+    name: 'Robe d\'Été "Luna"',
+    description: 'Légère et aérienne, la robe Luna est votre indispensable pour les journées ensoleillées. Elle présente un imprimé floral vibrant et une taille cintrée flatteuse.',
+    price: 79.99,
+    category: 'Robes',
     imageId: 'product-4',
-    slug: 'zenith-tech-fleece'
+    slug: 'robe-ete-luna'
   },
   {
     id: 'prod_5',
-    name: 'Strider-Lite Sneakers',
-    description: 'Engineered for comfort, designed for life. The Strider-Lite sneakers feature a cushioned sole and a breathable mesh upper, making them perfect for all-day wear. From your morning commute to a night out, they\'ve got you covered.',
+    name: 'Baskets "Orion"',
+    description: 'Alliez confort et style avec les baskets Orion. Dotées d\'une semelle intérieure coussinée et d\'un design minimaliste et élégant, elles sont parfaites pour un usage quotidien.',
     price: 119.99,
-    category: 'Apparel',
+    category: 'Chaussures',
     imageId: 'product-5',
-    slug: 'strider-lite-sneakers'
+    slug: 'baskets-orion'
   },
   {
     id: 'prod_6',
-    name: 'Artisan Ceramic Mug',
-    description: 'Elevate your coffee ritual. Each Artisan Ceramic Mug is handcrafted by skilled potters, featuring a unique glaze and a comfortable, ergonomic handle. A small piece of art for your daily routine.',
-    price: 29.99,
-    category: 'Home Goods',
+    name: 'Pull en Cachemire "Kai"',
+    description: 'Offrez-vous la douceur inégalée du cachemire. Le pull Kai a une coupe classique et se décline dans une gamme de couleurs intemporelles.',
+    price: 199.99,
+    category: 'Tops',
     imageId: 'product-6',
-    slug: 'artisan-ceramic-mug'
+    slug: 'pull-cachemire-kai'
   },
   {
     id: 'prod_7',
-    name: 'Lumina Smart Bulbs',
-    description: 'Set the perfect mood for any occasion. Lumina Smart Bulbs offer millions of colors and shades of white, all controllable from your smartphone or voice assistant. Easy to set up, and even easier to enjoy.',
-    price: 49.99,
-    category: 'Electronics',
+    name: 'Jupe Midi Plissée "Clara"',
+    description: 'Ajoutez une touche de sophistication à votre garde-robe. La jupe Clara présente des plis nets et un mouvement magnifique. À porter avec un chemisier ou un simple t-shirt.',
+    price: 69.99,
+    category: 'Pantalons',
     imageId: 'product-7',
-    slug: 'lumina-smart-bulbs'
+    slug: 'jupe-midi-clara'
   },
   {
     id: 'prod_8',
-    name: 'SoundBlock Go Speaker',
-    description: 'Big sound that fits in your hand. The SoundBlock Go is a rugged, waterproof Bluetooth speaker that delivers impressive audio quality. With a 12-hour battery, it’s ready for any adventure.',
-    price: 79.99,
-    category: 'Electronics',
+    name: 'Collier Pendentif "Celeste"',
+    description: 'Une pièce délicate et magnifique. Le collier Celeste est orné d\'un pendentif scintillant serti de zircons cubiques sur une fine chaîne en argent sterling.',
+    price: 59.99,
+    category: 'Accessoires',
     imageId: 'product-8',
-    slug: 'soundblock-go-speaker'
+    slug: 'collier-pendentif-celeste'
   },
   {
     id: 'prod_9',
-    name: 'Evernote Leather Journal',
-    description: 'Capture your thoughts in style. The Evernote Leather Journal is bound in genuine full-grain leather and filled with high-quality, acid-free paper. It lies flat for a seamless writing experience.',
-    price: 39.99,
-    category: 'Home Goods',
+    name: 'Trench-Coat "London"',
+    description: 'Le vêtement d\'extérieur par excellence. Le trench-coat London est confectionné dans un tissu résistant à l\'eau et présente tous les détails classiques pour un look intemporel.',
+    price: 249.99,
+    category: 'Vestes',
     imageId: 'product-9',
-    slug: 'evernote-leather-journal'
+    slug: 'trench-coat-london'
   },
   {
     id: 'prod_10',
-    name: 'ErgoForm Office Chair',
-    description: 'Support your body, boost your productivity. The ErgoForm chair features fully adjustable lumbar support, armrests, and seat depth, all designed to promote healthy posture through the longest workdays.',
-    price: 349.99,
-    category: 'Home Goods',
+    name: 'Pantalon Large "Paloma"',
+    description: 'Confort chic. Le pantalon Paloma est taillé dans un tissu fluide et présente une silhouette large et flatteuse. Idéal pour se détendre avec style.',
+    price: 79.99,
+    category: 'Pantalons',
     imageId: 'product-10',
-    slug: 'ergoform-office-chair'
+    slug: 'pantalon-large-paloma'
   },
   {
     id: 'prod_11',
-    name: 'Raptor-X Gaming Mouse',
-    description: 'Precision and speed at your fingertips. The Raptor-X boasts a 16,000 DPI optical sensor, customizable RGB lighting, and programmable buttons. Gain the competitive edge you need to win.',
-    price: 69.99,
-    category: 'Electronics',
+    name: 'Blazer "Blake"',
+    description: 'Affirmez votre style avec le blazer Blake. Coupe impeccable, épaules structurées et fermeture à un seul bouton pour un look moderne et puissant.',
+    price: 179.99,
+    category: 'Vestes',
     imageId: 'product-11',
-    slug: 'raptor-x-gaming-mouse'
+    slug: 'blazer-blake'
   },
   {
     id: 'prod_12',
-    name: 'Eclipse Aviator Sunglasses',
-    description: 'Timeless style meets modern technology. The Eclipse Aviators feature polarized lenses that reduce glare and provide 100% UV protection, all set in a lightweight yet durable metal frame.',
-    price: 149.99,
-    category: 'Apparel',
+    name: 'Lunettes de Soleil "Ivy"',
+    description: 'Protégez vos yeux avec style. Les lunettes de soleil Ivy arborent une monture œil-de-chat audacieuse et des verres offrant une protection UV à 100%.',
+    price: 89.99,
+    category: 'Accessoires',
     imageId: 'product-12',
-    slug: 'eclipse-aviator-sunglasses'
+    slug: 'lunettes-soleil-ivy'
   },
 ];
 
@@ -120,8 +120,8 @@ export const orders: Order[] = [
     total: 219.98,
     status: 'Shipped',
     items: [
-      { id: 'prod_3', name: 'Nomad Urban Backpack', price: 129.99, quantity: 1, imageId: 'product-3', slug: 'nomad-urban-backpack' },
-      { id: 'prod_4', name: 'Zenith Tech-Fleece', price: 89.99, quantity: 1, imageId: 'product-4', slug: 'zenith-tech-fleece' },
+      { id: 'prod_3', name: 'Sac à Main "Stella"', price: 149.99, quantity: 1, imageId: 'product-3', slug: 'sac-main-stella' },
+      { id: 'prod_4', name: 'Robe d\'Été "Luna"', price: 79.99, quantity: 1, imageId: 'product-4', slug: 'robe-ete-luna' },
     ],
   },
   {
@@ -129,10 +129,10 @@ export const orders: Order[] = [
     customerName: 'Bob Williams',
     customerEmail: 'bob@example.com',
     date: '2023-10-25',
-    total: 399.99,
+    total: 129.99,
     status: 'Delivered',
     items: [
-      { id: 'prod_1', name: 'Aether-Watch Pro', price: 399.99, quantity: 1, imageId: 'product-1', slug: 'aether-watch-pro' },
+      { id: 'prod_1', name: 'Blouse en Soie "Aria"', price: 129.99, quantity: 1, imageId: 'product-1', slug: 'blouse-soie-aria' },
     ],
   },
   {
@@ -140,11 +140,11 @@ export const orders: Order[] = [
     customerName: 'Charlie Brown',
     customerEmail: 'charlie@example.com',
     date: '2023-10-24',
-    total: 109.98,
+    total: 129.98,
     status: 'Processing',
     items: [
-      { id: 'prod_7', name: 'Lumina Smart Bulbs', price: 49.99, quantity: 1, imageId: 'product-7', slug: 'lumina-smart-bulbs' },
-      { id: 'prod_8', name: 'SoundBlock Go Speaker', price: 79.99, quantity: 1, imageId: 'product-8', slug: 'soundblock-go-speaker' },
+      { id: 'prod_7', name: 'Jupe Midi Plissée "Clara"', price: 69.99, quantity: 1, imageId: 'product-7', slug: 'jupe-midi-clara' },
+      { id: 'prod_8', name: 'Collier Pendentif "Celeste"', price: 59.99, quantity: 1, imageId: 'product-8', slug: 'collier-pendentif-celeste' },
     ],
   },
     {
@@ -152,11 +152,11 @@ export const orders: Order[] = [
     customerName: 'Diana Prince',
     customerEmail: 'diana@example.com',
     date: '2023-10-23',
-    total: 369.98,
+    total: 209.98,
     status: 'Delivered',
     items: [
-      { id: 'prod_2', name: 'SonicWave Headphones', price: 249.99, quantity: 1, imageId: 'product-2', slug: 'sonicwave-headphones' },
-      { id: 'prod_5', name: 'Strider-Lite Sneakers', price: 119.99, quantity: 1, imageId: 'product-5', slug: 'strider-lite-sneakers' },
+      { id: 'prod_2', name: 'Jean Skinny "Leo"', price: 89.99, quantity: 1, imageId: 'product-2', slug: 'jean-skinny-leo' },
+      { id: 'prod_5', name: 'Baskets "Orion"', price: 119.99, quantity: 1, imageId: 'product-5', slug: 'baskets-orion' },
     ],
   },
   {
@@ -164,11 +164,11 @@ export const orders: Order[] = [
     customerName: 'Ethan Hunt',
     customerEmail: 'ethan@example.com',
     date: '2023-10-22',
-    total: 389.98,
+    total: 329.98,
     status: 'Pending',
     items: [
-      { id: 'prod_10', name: 'ErgoForm Office Chair', price: 349.99, quantity: 1, imageId: 'product-10', slug: 'ergoform-office-chair' },
-      { id: 'prod_9', name: 'Evernote Leather Journal', price: 39.99, quantity: 1, imageId: 'product-9', slug: 'evernote-leather-journal' },
+      { id: 'prod_10', name: 'Pantalon Large "Paloma"', price: 79.99, quantity: 1, imageId: 'product-10', slug: 'pantalon-large-paloma' },
+      { id: 'prod_9', name: 'Trench-Coat "London"', price: 249.99, quantity: 1, imageId: 'product-9', slug: 'trench-coat-london' },
     ],
   },
     {
@@ -176,11 +176,11 @@ export const orders: Order[] = [
     customerName: 'Fiona Glenanne',
     customerEmail: 'fiona@example.com',
     date: '2023-10-21',
-    total: 219.98,
+    total: 269.98,
     status: 'Cancelled',
     items: [
-      { id: 'prod_11', name: 'Raptor-X Gaming Mouse', price: 69.99, quantity: 1, imageId: 'product-11', slug: 'raptor-x-gaming-mouse' },
-      { id: 'prod_12', name: 'Eclipse Aviator Sunglasses', price: 149.99, quantity: 1, imageId: 'product-12', slug: 'eclipse-aviator-sunglasses' },
+      { id: 'prod_11', name: 'Blazer "Blake"', price: 179.99, quantity: 1, imageId: 'product-11', slug: 'blazer-blake' },
+      { id: 'prod_12', name: 'Lunettes de Soleil "Ivy"', price: 89.99, quantity: 1, imageId: 'product-12', slug: 'lunettes-soleil-ivy' },
     ],
   },
 ];

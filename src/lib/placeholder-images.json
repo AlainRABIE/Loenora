@@ -2,81 +2,81 @@
   "placeholderImages": [
     {
       "id": "hero-image",
-      "description": "A stylish person in a modern outfit",
+      "description": "Un mannequin élégant dans une tenue moderne sur un fond de ville.",
       "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwbW9kZWx8ZW58MHx8fHwxNzY3MzgwNzM1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "fashion model"
+      "imageHint": "mannequin mode"
     },
     {
       "id": "product-1",
-      "description": "A modern, sleek smartwatch on a neutral background.",
-      "imageUrl": "https://images.unsplash.com/photo-1706289835536-3aa7b81aa2fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzbWFydHdhdGNoJTIwcHJvZHVjdHxlbnwwfHx8fDE3Njc0MTY2MTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "smartwatch product"
+      "description": "Une blouse en soie élégante sur un cintre.",
+      "imageUrl": "https://images.unsplash.com/photo-1620799140408-edc6d5f94218?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzaWxrJTIwYmxvdXNlfGVufDB8fHx8MTc2NzUyMDgyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "blouse soie"
     },
     {
       "id": "product-2",
-      "description": "High-quality wireless headphones.",
-      "imageUrl": "https://images.unsplash.com/photo-1667597366964-99fc56754b81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoZWFkcGhvbmVzJTIwcHJvZHVjdHxlbnwwfHx8fDE3Njc0MjgzNzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "headphones product"
+      "description": "Une paire de jeans skinny bien ajustés.",
+      "imageUrl": "https://images.unsplash.com/photo-1604176252222-7c423c13b640?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxza2lubnklMjBqZWFuc3xlbnwwfHx8fDE3Njc1MjA4MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "jean skinny"
     },
     {
       "id": "product-3",
-      "description": "A stylish and durable backpack for everyday use.",
-      "imageUrl": "https://images.unsplash.com/photo-1557587136-b627c2d6e938?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YmFja3BhY2slMjBwcm9kdWN0fGVufDB8fHx8MTc2NzQ2ODIzMHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "backpack product"
+      "description": "Un sac à main en cuir élégant.",
+      "imageUrl": "https://images.unsplash.com/photo-1590737144985-538a72c1c327?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxsZWF0aGVyJTIwaGFuZGJhZ3xlbnwwfHx8fDE3Njc1MjA4MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sac main"
     },
     {
       "id": "product-4",
-      "description": "A comfortable and modern hoodie.",
-      "imageUrl": "https://images.unsplash.com/photo-1594308482008-40c1396b4dff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxob29kaWUlMjBhcHBhcmVsfGVufDB8fHx8MTc2NzQ2ODIzMHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "hoodie apparel"
+      "description": "Une robe d'été fluide à motif floral.",
+      "imageUrl": "https://images.unsplash.com/photo-1594650495891-91f8c148a209?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzdW1tZXIlMjBkcmVzc3xlbnwwfHx8fDE3Njc1MjA4MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "robe été"
     },
     {
       "id": "product-5",
-      "description": "A pair of classic sneakers.",
-      "imageUrl": "https://images.unsplash.com/photo-1734956093501-811018732398?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c25lYWtlcnMlMjBzaG9lc3xlbnwwfHx8fDE3Njc0MjgzNzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "sneakers shoes"
+      "description": "Une paire de baskets blanches et épurées.",
+      "imageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzbmVha2Vyc3xlbnwwfHx8fDE3Njc1MjA4MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "baskets blanches"
     },
     {
       "id": "product-6",
-      "description": "A minimalist ceramic coffee mug.",
-      "imageUrl": "https://images.unsplash.com/photo-1616241673111-508b4662c707?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb2ZmZWUlMjBtdWd8ZW58MHx8fHwxNzY3NDI4MzcwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "coffee mug"
+      "description": "Un pull en cachemire doux et plié.",
+      "imageUrl": "https://images.unsplash.com/photo-1588252277462-25dfc8a07f0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjYXNobWVyZSUyMHN3ZWF0ZXJ8ZW58MHx8fHwxNzY3NTIxMDUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pull cachemire"
     },
     {
       "id": "product-7",
-      "description": "A set of smart home lighting bulbs.",
-      "imageUrl": "https://images.unsplash.com/photo-1614696131965-cc559b1ecad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzbWFydCUyMGxpZ2h0aW5nfGVufDB8fHx8MTc2NzQ2ODIzMHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "smart lighting"
+      "description": "Une jupe midi plissée et fluide.",
+      "imageUrl": "https://images.unsplash.com/photo-1594653651918-f686d888e993?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwbGVhdGVkJTIwbWlkaSUyMHNraXJ0fGVufDB8fHx8MTc2NzUyMTEyNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "jupe midi"
     },
     {
       "id": "product-8",
-      "description": "A portable bluetooth speaker.",
-      "imageUrl": "https://images.unsplash.com/photo-1507878566509-a0dbe19677a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Ymx1ZXRvb3RoJTIwc3BlYWtlcnxlbnwwfHx8fDE3Njc0MzEyMDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "bluetooth speaker"
+      "description": "Un collier pendentif en argent délicat.",
+      "imageUrl": "https://images.unsplash.com/photo-1611652022417-a0409a4a155a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZW5kYW50JTIwbmVja2xhY2V8ZW58MHx8fHwxNzY3NTIxMjM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "collier pendentif"
     },
     {
       "id": "product-9",
-      "description": "A leather-bound journal and a pen.",
-      "imageUrl": "https://images.unsplash.com/photo-1611473444578-f0c395db4a65?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxqb3VybmFsJTIwbm90ZWJvb2t8ZW58MHx8fHwxNzY3NDQ3NzQ0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "journal notebook"
+      "description": "Un trench-coat classique de couleur beige.",
+      "imageUrl": "https://images.unsplash.com/photo-1574269186638-348f10886595?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0cmVuY2glMjBjb2F0fGVufDB8fHx8MTc2NzUyMTI5NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "trench coat"
     },
     {
       "id": "product-10",
-      "description": "A modern ergonomic office chair.",
-      "imageUrl": "https://images.unsplash.com/photo-1681418659069-eef28d44aeab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxvZmZpY2UlMjBjaGFpcnxlbnwwfHx8fDE3NjczNzQ2NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "office chair"
+      "description": "Un pantalon large et fluide.",
+      "imageUrl": "https://images.unsplash.com/photo-1594623930121-23a104c63a56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aWRlJTIwbGVnJTIwcGFudHN8ZW58MHx8fHwxNzY3NTIxMzYxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pantalon large"
     },
     {
       "id": "product-11",
-      "description": "A high-performance gaming mouse.",
-      "imageUrl": "https://images.unsplash.com/photo-1629429408708-3a59f51979c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Z2FtaW5nJTIwbW91c2V8ZW58MHx8fHwxNzY3NDAxODIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "gaming mouse"
+      "description": "Un blazer ajusté et élégant.",
+      "imageUrl": "https://images.unsplash.com/photo-1592873293237-74c1a8927891?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzbWFydCUyMGJsYXplcnxlbnwwfHx8fDE3Njc1MjE0MTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "blazer chic"
     },
     {
       "id": "product-12",
-      "description": "A designer pair of sunglasses.",
-      "imageUrl": "https://images.unsplash.com/photo-1732615840503-4a09161c671d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzdW5nbGFzc2VzJTIwZmFzaGlvbnxlbnwwfHx8fDE3Njc0NDgxNjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "sunglasses fashion"
+      "description": "Une paire de lunettes de soleil mode.",
+      "imageUrl": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdW5nbGFzc2VzfGVufDB8fHx8MTc2NzUyMTQ5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lunettes soleil"
     }
   ]
 }
