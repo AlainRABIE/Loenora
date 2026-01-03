@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { CartProvider } from "@/context/cart-context";
 
 const fontBody = Inter({ subsets: ["latin"], variable: "--font-body" });
 const fontHeadline = Space_Grotesk({ subsets: ["latin"], variable: "--font-headline" });
@@ -14,13 +15,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params: {locale}
 }: Readonly<{
   children: React.ReactNode;
-  params: {locale: string};
 }>) {
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -34,7 +33,9 @@ export default function RootLayout({
           fontCursive.variable
         )}
       >
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

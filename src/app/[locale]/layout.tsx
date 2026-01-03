@@ -15,14 +15,12 @@ export default function LocaleLayout({ children, params }: Props) {
   
   return (
     <NextIntlClientProvider locale={params.locale} messages={messages}>
-      <CartProvider>
         <div className="relative flex min-h-dvh flex-col bg-background">
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
         <Toaster />
-      </CartProvider>
     </NextIntlClientProvider>
   )
 }
