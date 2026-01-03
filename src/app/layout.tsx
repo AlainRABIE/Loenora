@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toaster";
 import { CartProvider } from "@/context/cart-context";
 
 const fontBody = Inter({ subsets: ["latin"], variable: "--font-body" });
@@ -34,7 +35,10 @@ export default function RootLayout({
         )}
       >
         <CartProvider>
-          {children}
+            <div className="relative flex min-h-dvh flex-col bg-background">
+              {children}
+            </div>
+            <Toaster />
         </CartProvider>
       </body>
     </html>
