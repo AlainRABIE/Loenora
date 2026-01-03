@@ -45,6 +45,9 @@ function LanguageSwitcher() {
           <DropdownMenuItem>
             English
           </DropdownMenuItem>
+          <DropdownMenuItem>
+            Tunisien
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     )
