@@ -1,0 +1,39 @@
+
+{
+    "Header": {
+        "allProducts": "Tous les produits",
+        "electronics": "Électronique",
+        "apparel": "Vêtements",
+        "homeGoods": "Articles pour la maison",
+        "adminPanel": "Panneau d'administration",
+        "searchPlaceholder": "Rechercher des produits...",
+        "myAccount": "Mon compte",
+        "changeLanguage": "Changer de langue",
+        "shoppingCart": "Panier d'achats",
+        "toggleNavigation": "Basculer la navigation",
+        "french": "Français",
+        "english": "English",
+        "tunisian": "Tunisien"
+    },
+    "Footer": {
+        "tagline": "La nouvelle génération du shopping en ligne. Découvrez des collections sélectionnées et des pièces exclusives.",
+        "newsletter": "Abonnez-vous à notre newsletter",
+        "subscribe": "S'abonner",
+        "shop": "Boutique",
+        "allProducts": "Tous les produits",
+        "electronics": "Électronique",
+        "apparel": "Vêtements",
+        "homeGoods": "Articles pour la maison",
+        "support": "Support",
+        "contactUs": "Contactez-nous",
+        "faq": "FAQ",
+        "shippingReturns": "Livraison & Retours",
+        "trackOrder": "Suivre la commande",
+        "company": "Entreprise",
+        "aboutUs": "À propos de nous",
+        "careers": "Carrières",
+        "press": "Presse",
+        "terms": "Conditions de service",
+        "rightsReserved": "eCommerce Pro. Tous droits réservés."
+    }
+}

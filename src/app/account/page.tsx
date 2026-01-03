@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { orders } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
+import Link from 'next-intl';
 import { OrderStatus } from "@/lib/types";
 
 const statusColors: Record<OrderStatus, string> = {

@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import Link from 'next-intl';
 import { Search, ShoppingCart, User, Menu, Globe } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,30 +25,40 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 const navLinks = [
-  { href: "/products", label: "All Products" },
-  { href: "#", label: "Electronics" },
-  { href: "#", label: "Apparel" },
-  { href: "#", label: "Home Goods" },
+  { href: "/products", labelKey: "allProducts" },
+  { href: "#", labelKey: "electronics" },
+  { href: "#", labelKey: "apparel" },
+  { href: "#", labelKey: "homeGoods" },
 ];
 
 function LanguageSwitcher() {
+    const t = useTranslations("Header");
+    const locale = useLocale();
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const handleLocaleChange = (newLocale: string) => {
+      const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+      router.replace(newPath);
+    };
+
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
             <Globe className="h-5 w-5" />
-            <span className="sr-only">Changer de langue</span>
+            <span className="sr-only">{t('changeLanguage')}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem>
-            Français
+          <DropdownMenuItem onSelect={() => handleLocaleChange('fr')}>
+            {t('french')}
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            English
+          <DropdownMenuItem onSelect={() => handleLocaleChange('en')}>
+            {t('english')}
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            Tunisien
+          <DropdownMenuItem onSelect={() => handleLocaleChange('tn')}>
+            {t('tunisian')}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -55,6 +67,7 @@ function LanguageSwitcher() {
 
 export default function Header() {
   const { totalItems } = useCart();
+  const t = useTranslations('Header');
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -63,25 +76,25 @@ export default function Header() {
         <nav className="hidden md:flex md:ml-6 md:items-center md:gap-6 text-sm font-medium">
           {navLinks.map((link) => (
             <Link
-              key={link.label}
+              key={link.labelKey}
               href={link.href}
               className="text-foreground/60 transition-colors hover:text-foreground/80"
             >
-              {link.label}
+              {t(link.labelKey as any)}
             </Link>
           ))}
           <Link
             href="/admin/orders"
             className="text-accent/80 transition-colors hover:text-accent"
           >
-            Admin Panel
+            {t('adminPanel')}
           </Link>
         </nav>
         <div className="flex flex-1 items-center justify-end gap-4">
           <div className="hidden md:flex flex-1 max-w-xs items-center gap-2">
             <Input
               type="search"
-              placeholder="Search products..."
+              placeholder={t('searchPlaceholder')}
               className="w-full"
             />
             <Button type="submit" size="icon" variant="ghost">
@@ -89,12 +102,12 @@ export default function Header() {
             </Button>
           </div>
           <div className="flex items-center gap-2">
-            <Button size="icon" variant="ghost" asChild>
-              <Link href="/login">
-                <User className="h-5 w-5" />
-                <span className="sr-only">My Account</span>
-              </Link>
-            </Button>
+            <Link href="/login">
+                <Button size="icon" variant="ghost" asChild={false}>
+                    <User className="h-5 w-5" />
+                    <span className="sr-only">{t('myAccount')}</span>
+                </Button>
+            </Link>
             <LanguageSwitcher />
             <Sheet>
               <SheetTrigger asChild>
@@ -105,7 +118,7 @@ export default function Header() {
                       {totalItems}
                     </span>
                   )}
-                  <span className="sr-only">Shopping Cart</span>
+                  <span className="sr-only">{t('shoppingCart')}</span>
                 </Button>
               </SheetTrigger>
               <CartSheet />
@@ -116,7 +129,7 @@ export default function Header() {
                   variant="ghost"
                   size="icon"
                   className="md:hidden"
-                  aria-label="Toggle Navigation"
+                  aria-label={t('toggleNavigation')}
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
@@ -128,18 +141,18 @@ export default function Header() {
                 <nav className="flex flex-col gap-4 mt-8 text-lg font-medium">
                   {navLinks.map((link) => (
                     <Link
-                      key={link.label}
+                      key={link.labelKey}
                       href={link.href}
                       className="text-foreground/80 transition-colors hover:text-foreground"
                     >
-                      {link.label}
+                      {t(link.labelKey as any)}
                     </Link>
                   ))}
                    <Link
                     href="/admin/orders"
                     className="text-accent/80 transition-colors hover:text-accent"
                   >
-                    Admin Panel
+                    {t('adminPanel')}
                   </Link>
                 </nav>
               </SheetContent>

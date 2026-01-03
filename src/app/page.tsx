@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next-intl";
 import { ArrowRight, ShoppingCart, Gem } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { products } from "@/lib/data";

@@ -1,0 +1,39 @@
+
+{
+    "Header": {
+        "allProducts": "All Products",
+        "electronics": "Electronics",
+        "apparel": "Apparel",
+        "homeGoods": "Home Goods",
+        "adminPanel": "Admin Panel",
+        "searchPlaceholder": "Search products...",
+        "myAccount": "My Account",
+        "changeLanguage": "Change language",
+        "shoppingCart": "Shopping Cart",
+        "toggleNavigation": "Toggle Navigation",
+        "french": "Français",
+        "english": "English",
+        "tunisian": "Tunisien"
+    },
+    "Footer": {
+        "tagline": "The next generation of online shopping. Discover curated collections and exclusive pieces.",
+        "newsletter": "Subscribe to our newsletter",
+        "subscribe": "Subscribe",
+        "shop": "Shop",
+        "allProducts": "All Products",
+        "electronics": "Electronics",
+        "apparel": "Apparel",
+        "homeGoods": "Home Goods",
+        "support": "Support",
+        "contactUs": "Contact Us",
+        "faq": "FAQ",
+        "shippingReturns": "Shipping & Returns",
+        "trackOrder": "Track Order",
+        "company": "Company",
+        "aboutUs": "About Us",
+        "careers": "Careers",
+        "press": "Press",
+        "terms": "Terms of Service",
+        "rightsReserved": "eCommerce Pro. All rights reserved."
+    }
+}

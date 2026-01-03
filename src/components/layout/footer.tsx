@@ -1,29 +1,9 @@
 import Logo from "../logo";
-import Link from "next/link";
+import Link from 'next-intl';
 import { Github, Twitter, Linkedin } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-
-const footerLinks = {
-  shop: [
-    { title: "All Products", href: "/products" },
-    { title: "Electronics", href: "#" },
-    { title: "Apparel", href: "#" },
-    { title: "Home Goods", href: "#" },
-  ],
-  support: [
-    { title: "Contact Us", href: "#" },
-    { title: "FAQ", href: "#" },
-    { title: "Shipping & Returns", href: "#" },
-    { title: "Track Order", href: "#" },
-  ],
-  company: [
-    { title: "About Us", href: "#" },
-    { title: "Careers", href: "#" },
-    { title: "Press", href: "#" },
-    { title: "Terms of Service", href: "#" },
-  ],
-};
+import { useTranslations } from 'next-intl';
 
 const socialLinks = [
   { icon: <Twitter className="h-5 w-5" />, href: "#", name: "Twitter" },
@@ -32,6 +12,29 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const t = useTranslations('Footer');
+
+  const footerLinks = {
+    shop: [
+      { title: t('allProducts'), href: "/products" },
+      { title: t('electronics'), href: "#" },
+      { title: t('apparel'), href: "#" },
+      { title: t('homeGoods'), href: "#" },
+    ],
+    support: [
+      { title: t('contactUs'), href: "#" },
+      { title: t('faq'), href: "#" },
+      { title: t('shippingReturns'), href: "#" },
+      { title: t('trackOrder'), href: "#" },
+    ],
+    company: [
+      { title: t('aboutUs'), href: "#" },
+      { title: t('careers'), href: "#" },
+      { title: t('press'), href: "#" },
+      { title: t('terms'), href: "#" },
+    ],
+  };
+
   return (
     <footer className="bg-card text-card-foreground border-t">
       <div className="container mx-auto px-4 py-12">
@@ -39,19 +42,19 @@ export default function Footer() {
           <div className="lg:col-span-2 space-y-4">
             <Logo />
             <p className="text-sm text-muted-foreground max-w-md">
-              The next generation of online shopping. Discover curated collections and exclusive pieces.
+              {t('tagline')}
             </p>
             <div className="space-y-2">
-              <p className="font-semibold">Subscribe to our newsletter</p>
+              <p className="font-semibold">{t('newsletter')}</p>
               <form className="flex gap-2">
                 <Input type="email" placeholder="Enter your email" className="max-w-xs" />
-                <Button type="submit" variant="default">Subscribe</Button>
+                <Button type="submit" variant="default">{t('subscribe')}</Button>
               </form>
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:col-span-2 lg:col-span-3">
             <div>
-              <h4 className="font-headline font-semibold mb-4">Shop</h4>
+              <h4 className="font-headline font-semibold mb-4">{t('shop')}</h4>
               <ul className="space-y-2">
                 {footerLinks.shop.map(link => (
                   <li key={link.title}>
@@ -63,7 +66,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="font-headline font-semibold mb-4">Support</h4>
+              <h4 className="font-headline font-semibold mb-4">{t('support')}</h4>
               <ul className="space-y-2">
                 {footerLinks.support.map(link => (
                   <li key={link.title}>
@@ -75,7 +78,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="font-headline font-semibold mb-4">Company</h4>
+              <h4 className="font-headline font-semibold mb-4">{t('company')}</h4>
               <ul className="space-y-2">
                 {footerLinks.company.map(link => (
                   <li key={link.title}>
@@ -89,7 +92,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} eCommerce Pro. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} {t('rightsReserved')}</p>
           <div className="flex gap-2">
             {socialLinks.map(link => (
               <Button key={link.name} variant="ghost" size="icon" asChild>

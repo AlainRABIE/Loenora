@@ -1,0 +1,39 @@
+
+{
+    "Header": {
+        "allProducts": "المنتجات الكل",
+        "electronics": "إلكترونيات",
+        "apparel": "الملابس",
+        "homeGoods": "مستلزمات المنزل",
+        "adminPanel": "لوحة التحكم",
+        "searchPlaceholder": "البحث عن المنتجات...",
+        "myAccount": "حسابي",
+        "changeLanguage": "تغيير اللغة",
+        "shoppingCart": "عربة التسوق",
+        "toggleNavigation": "تبديل التنقل",
+        "french": "Français",
+        "english": "English",
+        "tunisian": "Tunisien"
+    },
+    "Footer": {
+        "tagline": "الجيل الجديد من التسوق عبر الإنترنت. اكتشف مجموعات منسقة وقطع حصرية.",
+        "newsletter": "اشترك في نشرتنا الإخبارية",
+        "subscribe": "اشتراك",
+        "shop": "المتجر",
+        "allProducts": "جميع المنتجات",
+        "electronics": "إلكترونيات",
+        "apparel": "ملابس",
+        "homeGoods": "أدوات منزلية",
+        "support": "الدعم",
+        "contactUs": "اتصل بنا",
+        "faq": "الأسئلة الشائعة",
+        "shippingReturns": "الشحن والإرجاع",
+        "trackOrder": "تتبع الطلب",
+        "company": "الشركة",
+        "aboutUs": "معلومات عنا",
+        "careers": "وظائف",
+        "press": "الصحافة",
+        "terms": "شروط الخدمة",
+        "rightsReserved": "eCommerce Pro. كل الحقوق محفوظة."
+    }
+}
