@@ -14,12 +14,13 @@ export const products: Product[] = [
   },
   {
     id: 'prod_2',
-    name: 'Robe d\'Été "Luna"',
-    description: 'Légère et aérienne, la robe Luna est votre indispensable pour les journées ensoleillées. Elle présente un imprimé floral vibrant et une taille cintrée flatteuse.',
-    price: 79.99,
-    category: 'Robes',
-    imageId: 'product-4',
-    slug: 'robe-ete-luna'
+    name: 'Capes jacket',
+    description: 'Une cape jacket chic et polyvalente, idéale pour superposer vos tenues avec style.',
+    price: 85,
+    category: 'Vestes',
+    imageId: 'product-9',
+    slug: 'capes-jacket',
+    colors: ['Noir', 'Camel', 'Gris chiné'],
   }
 ];
 
