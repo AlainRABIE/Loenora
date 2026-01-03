@@ -2,12 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/toaster";
-import { CartProvider } from "@/context/cart-context";
-import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
 
 const fontBody = Inter({ subsets: ["latin"], variable: "--font-body" });
 const fontHeadline = Space_Grotesk({ subsets: ["latin"], variable: "--font-headline" });
@@ -18,15 +12,13 @@ export const metadata: Metadata = {
   description: "Styliste modéliste : Nour.Rabie",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
   params: {locale}
 }: Readonly<{
   children: React.ReactNode;
   params: {locale: string};
 }>) {
-  const messages = await getMessages();
-
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
@@ -42,16 +34,7 @@ export default async function RootLayout({
           fontCursive.variable
         )}
       >
-        <NextIntlClientProvider messages={messages}>
-          <CartProvider>
-            <div className="relative flex min-h-dvh flex-col bg-background">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
-            <Toaster />
-          </CartProvider>
-        </NextIntlClientProvider>
+        {children}
       </body>
     </html>
   );
