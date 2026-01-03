@@ -56,9 +56,9 @@
     },
     {
       "id": "product-9",
-      "description": "Un trench-coat classique de couleur beige.",
-      "imageUrl": "https://images.unsplash.com/photo-1574269186638-348f10886595?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0cmVuY2glMjBjb2F0fGVufDB8fHx8MTc2NzUyMTI5NHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "trench coat"
+      "description": "Une cape jacket marron texturée.",
+      "imageUrl": "https://images.unsplash.com/photo-1590369213193-a0e0f146cc37?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxicm93biUyMGNhcGUlMjBqYWNrZXR8ZW58MHx8fHwxNzE5OTk4ODc2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cape jacket"
     },
     {
       "id": "product-10",
