@@ -3,12 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/toaster";
-import { CartProvider } from "@/context/cart-context";
 import { ReactNode } from "react";
-import { NextIntlClientProvider, useMessages } from 'next-intl';
-import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
 
 const fontBody = Inter({ subsets: ["latin"], variable: "--font-body" });
 const fontHeadline = Space_Grotesk({ subsets: ["latin"], variable: "--font-headline" });
@@ -28,7 +23,6 @@ export default function RootLayout({
   children,
   params: { locale }
 }: Readonly<Props>) {
-  const messages = useMessages();
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -45,16 +39,7 @@ export default function RootLayout({
           fontCursive.variable
         )}
       >
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <CartProvider>
-              <div className="relative flex min-h-dvh flex-col bg-background">
-                <Header />
-                <main className="flex-1">{children}</main>
-                <Footer />
-              </div>
-              <Toaster />
-          </CartProvider>
-        </NextIntlClientProvider>
+        {children}
       </body>
     </html>
   );
