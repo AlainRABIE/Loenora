@@ -48,7 +48,7 @@ export default function CartSheet() {
                     </div>
                   )}
                   <div className="flex-1 space-y-2">
-                    <Link href={`/products/${item.slug}`} locale={locale} className="font-semibold hover:underline">
+                    <Link href={`/products/${item.slug}`} className="font-semibold hover:underline">
                       {item.name}
                     </Link>
                     <p className="text-sm text-muted-foreground">
@@ -101,12 +101,12 @@ export default function CartSheet() {
             </div>
             <SheetClose asChild>
                 <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                    <Link href="/checkout" locale={locale}>Continue to Checkout</Link>
+                    <Link href="/checkout">Continue to Checkout</Link>
                 </Button>
             </SheetClose>
             <SheetClose asChild>
                 <Button asChild variant="outline" className="w-full">
-                    <Link href="/products" locale={locale}>Continue Shopping</Link>
+                    <Link href="/products">Continue Shopping</Link>
                 </Button>
             </SheetClose>
           </SheetFooter>
@@ -119,7 +119,7 @@ export default function CartSheet() {
           </p>
           <SheetClose asChild>
             <Button asChild>
-                <Link href="/products" locale={locale}>Start Shopping</Link>
+                <Link href="/products">Start Shopping</Link>
             </Button>
           </SheetClose>
         </div>

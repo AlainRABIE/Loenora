@@ -57,7 +57,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {footerLinks.shop.map(link => (
                   <li key={link.title}>
-                    <Link href={link.href} locale={locale} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                       {link.title}
                     </Link>
                   </li>
@@ -69,7 +69,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {footerLinks.support.map(link => (
                   <li key={link.title}>
-                    <Link href={link.href} locale={locale} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                       {link.title}
                     </Link>
                   </li>
@@ -81,7 +81,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {footerLinks.company.map(link => (
                   <li key={link.title}>
-                    <Link href={link.href} locale={locale} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                       {link.title}
                     </Link>
                   </li>

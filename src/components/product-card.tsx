@@ -17,11 +17,10 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
   const image = PlaceHolderImages.find(img => img.id === product.imageId);
-  const locale = useLocale();
 
   return (
     <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg">
-      <Link href={`/products/${product.slug}`} locale={locale} className="group">
+      <Link href={`/products/${product.slug}`} className="group">
         <CardHeader className="p-0">
           <div className="relative h-60 w-full overflow-hidden">
             {image && (

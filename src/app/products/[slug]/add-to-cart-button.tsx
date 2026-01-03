@@ -5,10 +5,12 @@ import { useCart } from '@/context/cart-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Minus, Plus, ShoppingCart } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function AddToCartButton({ productId }: { productId: string }) {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
+  const t = useTranslations('ProductPage');
 
   const handleAddToCart = () => {
     addToCart(productId, quantity);
