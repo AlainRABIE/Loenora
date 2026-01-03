@@ -3,33 +3,17 @@ import type { Product, Order } from './types';
 export const products: Product[] = [
   {
     id: 'prod_1',
-    name: 'Blouse en Soie "Aria"',
-    description: 'Une blouse en soie luxueuse avec une coupe fluide et des détails de volants délicats. Parfaite pour une journée au bureau ou une soirée élégante.',
-    price: 129.99,
-    category: 'Tops',
+    name: 'W Jacket',
+    description: 'Une veste élégante et moderne, disponible en plusieurs couleurs. Parfaite pour toutes les saisons.',
+    price: 45,
+    originalPrice: 52,
+    category: 'Vestes',
     imageId: 'product-1',
-    slug: 'blouse-soie-aria'
+    slug: 'w-jacket',
+    colors: ['Noir', 'Bleu Marine', 'Gris', 'Bordeaux', 'Vert Forêt'],
   },
   {
     id: 'prod_2',
-    name: 'Jean Skinny "Leo"',
-    description: 'Notre jean skinny le plus vendu, conçu pour épouser et flatter vos formes. Fabriqué à partir d\'un denim stretch de première qualité pour un confort qui dure toute la journée.',
-    price: 89.99,
-    category: 'Pantalons',
-    imageId: 'product-2',
-    slug: 'jean-skinny-leo'
-  },
-  {
-    id: 'prod_3',
-    name: 'Sac à Main "Stella"',
-    description: 'Le compagnon idéal pour toutes les occasions. Le sac Stella est fabriqué en cuir végétalien souple et dispose de plusieurs compartiments pour garder vos essentiels organisés.',
-    price: 149.99,
-    category: 'Accessoires',
-    imageId: 'product-3',
-    slug: 'sac-main-stella'
-  },
-  {
-    id: 'prod_4',
     name: 'Robe d\'Été "Luna"',
     description: 'Légère et aérienne, la robe Luna est votre indispensable pour les journées ensoleillées. Elle présente un imprimé floral vibrant et une taille cintrée flatteuse.',
     price: 79.99,

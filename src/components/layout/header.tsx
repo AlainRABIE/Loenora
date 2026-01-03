@@ -1,6 +1,6 @@
 "use client";
 
-import Link from 'next-intl';
+import Link from 'next/link';
 import { Search, ShoppingCart, User, Menu, Globe } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";

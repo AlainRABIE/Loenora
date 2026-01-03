@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import Link from 'next-intl';
+import Link from 'next/link';
 
 const LoenoraLogo = ({ className }: { className?: string }) => (
   <svg

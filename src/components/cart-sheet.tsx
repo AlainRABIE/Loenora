@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next-intl";
+import Link from "next/link";
 import { useCart } from "@/context/cart-context";
 import { Button } from "@/components/ui/button";
 import {

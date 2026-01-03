@@ -56,9 +56,25 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
             </div>
           </div>
           
-          <p className="text-3xl font-bold text-primary">${product.price.toFixed(2)}</p>
+          <div className="flex items-baseline gap-2">
+            <p className="text-3xl font-bold text-primary">{product.price.toFixed(2)} TND</p>
+            {product.originalPrice && (
+              <p className="text-xl text-muted-foreground line-through">{product.originalPrice.toFixed(2)} TND</p>
+            )}
+          </div>
           
           <p className="text-muted-foreground leading-relaxed">{product.description}</p>
+
+          {product.colors && (
+            <div>
+              <h3 className="text-sm font-medium text-foreground mb-2">Couleurs :</h3>
+              <div className="flex flex-wrap gap-2">
+                {product.colors.map(color => (
+                  <Button key={color} variant="outline" size="sm">{color}</Button>
+                ))}
+              </div>
+            </div>
+          )}
           
           <AddToCartButton productId={product.id} />
 

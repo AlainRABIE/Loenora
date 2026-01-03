@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next-intl";
+import Link from "next/link";
 import { type Product } from "@/lib/types";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
@@ -41,7 +41,12 @@ export default function ProductCard({ product }: ProductCardProps) {
         </CardContent>
       </Link>
       <CardFooter className="p-4 pt-0 flex justify-between items-center">
-        <p className="text-lg font-bold text-primary">${product.price.toFixed(2)}</p>
+        <div className="flex items-center gap-2">
+            <p className="text-lg font-bold text-primary">{product.price.toFixed(2)} TND</p>
+            {product.originalPrice && (
+                <p className="text-sm text-muted-foreground line-through">{product.originalPrice.toFixed(2)} TND</p>
+            )}
+        </div>
         <Button 
           variant="outline" 
           size="sm"

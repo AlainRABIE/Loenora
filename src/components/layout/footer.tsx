@@ -1,5 +1,5 @@
 import Logo from "../logo";
-import Link from 'next-intl';
+import Link from 'next/link';
 import { Github, Twitter, Linkedin } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
