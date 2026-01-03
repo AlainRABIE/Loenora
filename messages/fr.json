@@ -31,5 +31,31 @@
         "press": "Presse",
         "terms": "Conditions de service",
         "rightsReserved": "eCommerce Pro. Tous droits réservés."
+    },
+    "ProductCard": {
+        "addToCart": "Ajouter au panier"
+    },
+    "ProductPage": {
+        "reviews": "({count} avis)",
+        "colors": "Couleurs",
+        "freeShipping": "Livraison gratuite pour les commandes de plus de 50 $",
+        "warranty": "Garantie fabricant de 2 ans",
+        "youMightAlsoLike": "Vous pourriez aussi aimer",
+        "addToCart": "Ajouter au panier",
+        "decreaseQuantity": "Diminuer la quantité",
+        "increaseQuantity": "Augmenter la quantité",
+        "quantity": "Quantité"
+    },
+    "ProductsPage": {
+        "title": "Tous les produits",
+        "subtitle": "Parcourez notre collection complète de vêtements et accessoires de haute qualité.",
+        "searchPlaceholder": "Rechercher des produits...",
+        "category": "Catégorie",
+        "allCategories": "Toutes les catégories",
+        "sortBy": "Trier par",
+        "featured": "Populaires",
+        "priceAsc": "Prix : Croissant",
+        "priceDesc": "Prix : Décroissant",
+        "newest": "Nouveautés"
     }
 }

@@ -31,5 +31,31 @@
         "press": "الصحافة",
         "terms": "شروط الخدمة",
         "rightsReserved": "eCommerce Pro. كل الحقوق محفوظة."
+    },
+    "ProductCard": {
+        "addToCart": "أضف إلى السلة"
+    },
+    "ProductPage": {
+        "reviews": "({count} مراجعات)",
+        "colors": "الألوان",
+        "freeShipping": "شحن مجاني للطلبات التي تزيد عن 50 دولارًا",
+        "warranty": "ضمان المصنع لمدة 2 سنوات",
+        "youMightAlsoLike": "قد يعجبك ايضا",
+        "addToCart": "أضف إلى السلة",
+        "decreaseQuantity": "تقليل الكمية",
+        "increaseQuantity": "زيادة الكمية",
+        "quantity": "الكمية"
+    },
+    "ProductsPage": {
+        "title": "جميع المنتجات",
+        "subtitle": "تصفح مجموعتنا الكاملة من الملابس والإكسسوارات عالية الجودة.",
+        "searchPlaceholder": "البحث عن المنتجات...",
+        "category": "الفئة",
+        "allCategories": "جميع الفئات",
+        "sortBy": "فرز حسب",
+        "featured": "المميزة",
+        "priceAsc": "السعر: من الأقل إلى الأعلى",
+        "priceDesc": "السعر: من الأعلى إلى الأقل",
+        "newest": "الأحدث"
     }
 }

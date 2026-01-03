@@ -31,5 +31,31 @@
         "press": "Press",
         "terms": "Terms of Service",
         "rightsReserved": "eCommerce Pro. All rights reserved."
+    },
+    "ProductCard": {
+        "addToCart": "Add to Cart"
+    },
+    "ProductPage": {
+        "reviews": "({count} reviews)",
+        "colors": "Colors",
+        "freeShipping": "Free shipping on orders over $50",
+        "warranty": "2-Year manufacturer warranty",
+        "youMightAlsoLike": "You might also like",
+        "addToCart": "Add to Cart",
+        "decreaseQuantity": "Decrease quantity",
+        "increaseQuantity": "Increase quantity",
+        "quantity": "Quantity"
+    },
+    "ProductsPage": {
+        "title": "All products",
+        "subtitle": "Browse our complete collection of high-quality apparel and accessories.",
+        "searchPlaceholder": "Search for products...",
+        "category": "Category",
+        "allCategories": "All categories",
+        "sortBy": "Sort by",
+        "featured": "Featured",
+        "priceAsc": "Price: Low to High",
+        "priceDesc": "Price: High to Low",
+        "newest": "Newest"
     }
 }

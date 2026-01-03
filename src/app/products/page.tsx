@@ -9,29 +9,32 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const t = await getTranslations('ProductsPage');
+
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="text-center mb-10">
-        <h1 className="text-4xl md:text-5xl font-bold">Tous les produits</h1>
+        <h1 className="text-4xl md:text-5xl font-bold">{t('title')}</h1>
         <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
-          Parcourez notre collection complète de vêtements et accessoires de haute qualité.
+          {t('subtitle')}
         </p>
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 justify-between items-center mb-8 p-4 bg-card rounded-lg shadow-sm">
         <div className="relative w-full md:max-w-sm">
-          <Input type="search" placeholder="Rechercher des produits..." className="pl-10" />
+          <Input type="search" placeholder={t('searchPlaceholder')} className="pl-10" />
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         </div>
         <div className="flex gap-4">
           <Select defaultValue="all">
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Catégorie" />
+              <SelectValue placeholder={t('category')} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">Toutes les catégories</SelectItem>
+              <SelectItem value="all">{t('allCategories')}</SelectItem>
               <SelectItem value="tops">Tops</SelectItem>
               <SelectItem value="pantalons">Pantalons</SelectItem>
               <SelectItem value="robes">Robes</SelectItem>
@@ -40,13 +43,13 @@ export default function ProductsPage() {
           </Select>
           <Select defaultValue="featured">
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Trier par" />
+              <SelectValue placeholder={t('sortBy')} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="featured">Populaires</SelectItem>
-              <SelectItem value="price-asc">Prix : Croissant</SelectItem>
-              <SelectItem value="price-desc">Prix : Décroissant</SelectItem>
-              <SelectItem value="newest">Nouveautés</SelectItem>
+              <SelectItem value="featured">{t('featured')}</SelectItem>
+              <SelectItem value="price-asc">{t('priceAsc')}</SelectItem>
+              <SelectItem value="price-desc">{t('priceDesc')}</SelectItem>
+              <SelectItem value="newest">{t('newest')}</SelectItem>
             </SelectContent>
           </Select>
         </div>

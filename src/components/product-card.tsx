@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCart } from "@/context/cart-context";
 import { ShoppingCart } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 
 interface ProductCardProps {
   product: Product;
@@ -17,6 +17,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
   const image = PlaceHolderImages.find(img => img.id === product.imageId);
+  const t = useTranslations('ProductCard');
 
   return (
     <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg">
@@ -54,7 +55,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           onClick={() => addToCart(product.id, 1)}
         >
           <ShoppingCart className="mr-2 h-4 w-4" />
-          Add to Cart
+          {t('addToCart')}
         </Button>
       </CardFooter>
     </Card>

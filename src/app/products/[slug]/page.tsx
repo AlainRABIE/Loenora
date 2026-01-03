@@ -3,17 +3,19 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
-import { Star, Truck, ShieldCheck, ShoppingCart } from "lucide-react";
+import { Star, Truck, ShieldCheck } from "lucide-react";
 import ProductCard from "@/components/product-card";
 import AddToCartButton from "./add-to-cart-button";
+import { getTranslations } from "next-intl/server";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return products.map((product) => ({
     slug: product.slug,
   }));
 }
 
-export default function ProductDetailPage({ params }: { params: { slug: string } }) {
+export default async function ProductDetailPage({ params }: { params: { slug: string } }) {
+  const t = await getTranslations('ProductPage');
   const product = products.find((p) => p.slug === params.slug);
 
   if (!product) {
@@ -52,7 +54,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                 <Star className="w-5 h-5 fill-current" />
                 <Star className="w-5 h-5 fill-current text-muted-foreground/30" />
               </div>
-              <span className="text-sm text-muted-foreground">(123 reviews)</span>
+              <span className="text-sm text-muted-foreground">{t('reviews', {count: 123})}</span>
             </div>
           </div>
           
@@ -67,7 +69,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
 
           {product.colors && (
             <div>
-              <h3 className="text-sm font-medium text-foreground mb-2">Couleurs :</h3>
+              <h3 className="text-sm font-medium text-foreground mb-2">{t('colors')}:</h3>
               <div className="flex flex-wrap gap-2">
                 {product.colors.map(color => (
                   <Button key={color} variant="outline" size="sm">{color}</Button>
@@ -81,18 +83,18 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
           <div className="border-t pt-6 space-y-4">
             <div className="flex items-center gap-3">
               <Truck className="w-6 h-6 text-accent" />
-              <p className="text-sm font-medium">Free shipping on orders over $50</p>
+              <p className="text-sm font-medium">{t('freeShipping')}</p>
             </div>
             <div className="flex items-center gap-3">
               <ShieldCheck className="w-6 h-6 text-accent" />
-              <p className="text-sm font-medium">2-Year manufacturer warranty</p>
+              <p className="text-sm font-medium">{t('warranty')}</p>
             </div>
           </div>
         </div>
       </div>
       
       <div className="mt-20">
-        <h2 className="text-3xl font-bold text-center mb-10">Vous pourriez aussi aimer</h2>
+        <h2 className="text-3xl font-bold text-center mb-10">{t('youMightAlsoLike')}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {relatedProducts.map((p) => (
                 <ProductCard key={p.id} product={p} />
