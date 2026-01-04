@@ -20,6 +20,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const shippingSchema = z.object({
   email: z.string().email(),
@@ -44,6 +45,7 @@ export default function CheckoutPage() {
   const { cartItems, cartTotal, clearCart } = useCart();
   const { toast } = useToast();
   const router = useRouter();
+  const t = useTranslations('CheckoutPage');
 
   const form = useForm<z.infer<typeof checkoutSchema>>({
     resolver: zodResolver(checkoutSchema),
@@ -68,8 +70,8 @@ export default function CheckoutPage() {
   function onSubmit(values: z.infer<typeof checkoutSchema>) {
     console.log(values);
     toast({
-      title: "Order Placed!",
-      description: "Thank you for your purchase. A confirmation email has been sent.",
+      title: t('orderPlacedTitle'),
+      description: t('orderPlacedDescription'),
     });
     clearCart();
     router.push("/");
@@ -77,11 +79,11 @@ export default function CheckoutPage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">Checkout</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">{t('title')}</h1>
       <div className="grid lg:grid-cols-2 gap-12">
         <Card>
           <CardHeader>
-            <CardTitle>Order Summary</CardTitle>
+            <CardTitle>{t('orderSummary')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {cartItems.map((item) => {
@@ -94,7 +96,7 @@ export default function CheckoutPage() {
                     </div>
                     <div>
                       <p className="font-semibold">{item.name}</p>
-                      <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
+                      <p className="text-sm text-muted-foreground">{t('quantity', { count: item.quantity })}</p>
                     </div>
                   </div>
                   <p className="font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
@@ -104,17 +106,17 @@ export default function CheckoutPage() {
             <Separator />
             <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                    <p className="text-muted-foreground">Subtotal</p>
+                    <p className="text-muted-foreground">{t('subtotal')}</p>
                     <p>${cartTotal.toFixed(2)}</p>
                 </div>
                 <div className="flex justify-between">
-                    <p className="text-muted-foreground">Shipping</p>
-                    <p>{shippingCost === 0 ? "Free" : `$${shippingCost.toFixed(2)}`}</p>
+                    <p className="text-muted-foreground">{t('shipping')}</p>
+                    <p>{shippingCost === 0 ? t('free') : `$${shippingCost.toFixed(2)}`}</p>
                 </div>
             </div>
           </CardContent>
           <CardFooter className="flex justify-between text-lg font-bold">
-            <p>Total</p>
+            <p>{t('total')}</p>
             <p>${total.toFixed(2)}</p>
           </CardFooter>
         </Card>
@@ -122,57 +124,57 @@ export default function CheckoutPage() {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <Card>
-              <CardHeader><CardTitle>Shipping Information</CardTitle></CardHeader>
+              <CardHeader><CardTitle>{t('shippingInfo')}</CardTitle></CardHeader>
               <CardContent className="space-y-4">
                 <FormField control={form.control} name="email" render={({ field }) => (
-                  <FormItem><FormLabel>Email</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>{t('email')}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                 )} />
                 <div className="grid md:grid-cols-2 gap-4">
                   <FormField control={form.control} name="firstName" render={({ field }) => (
-                    <FormItem><FormLabel>First Name</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                    <FormItem><FormLabel>{t('firstName')}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                   <FormField control={form.control} name="lastName" render={({ field }) => (
-                    <FormItem><FormLabel>Last Name</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                    <FormItem><FormLabel>{t('lastName')}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                 </div>
                 <FormField control={form.control} name="address" render={({ field }) => (
-                  <FormItem><FormLabel>Address</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>{t('address')}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                 )} />
                 <div className="grid md:grid-cols-3 gap-4">
                     <FormField control={form.control} name="city" render={({ field }) => (
-                        <FormItem><FormLabel>City</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                        <FormItem><FormLabel>{t('city')}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="state" render={({ field }) => (
-                        <FormItem><FormLabel>State</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                        <FormItem><FormLabel>{t('state')}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="zip" render={({ field }) => (
-                        <FormItem><FormLabel>ZIP Code</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                        <FormItem><FormLabel>{t('zipCode')}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                     )} />
                 </div>
                  <FormField control={form.control} name="country" render={({ field }) => (
-                    <FormItem><FormLabel>Country</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                    <FormItem><FormLabel>{t('country')}</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                 )} />
               </CardContent>
             </Card>
             
             <Card>
-                <CardHeader><CardTitle>Payment Details</CardTitle></CardHeader>
+                <CardHeader><CardTitle>{t('paymentDetails')}</CardTitle></CardHeader>
                 <CardContent className="space-y-4">
                     <FormField control={form.control} name="cardNumber" render={({ field }) => (
-                        <FormItem><FormLabel>Card Number</FormLabel><FormControl><Input {...field} placeholder="XXXX XXXX XXXX XXXX"/></FormControl><FormMessage /></FormItem>
+                        <FormItem><FormLabel>{t('cardNumber')}</FormLabel><FormControl><Input {...field} placeholder="XXXX XXXX XXXX XXXX"/></FormControl><FormMessage /></FormItem>
                     )} />
                     <div className="grid grid-cols-2 gap-4">
                         <FormField control={form.control} name="expiryDate" render={({ field }) => (
-                            <FormItem><FormLabel>Expiry Date</FormLabel><FormControl><Input {...field} placeholder="MM/YY" /></FormControl><FormMessage /></FormItem>
+                            <FormItem><FormLabel>{t('expiryDate')}</FormLabel><FormControl><Input {...field} placeholder="MM/YY" /></FormControl><FormMessage /></FormItem>
                         )} />
                         <FormField control={form.control} name="cvc" render={({ field }) => (
-                            <FormItem><FormLabel>CVC</FormLabel><FormControl><Input {...field} placeholder="XXX" /></FormControl><FormMessage /></FormItem>
+                            <FormItem><FormLabel>{t('cvc')}</FormLabel><FormControl><Input {...field} placeholder="XXX" /></FormControl><FormMessage /></FormItem>
                         )} />
                     </div>
                 </CardContent>
             </Card>
 
-            <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">Place Order</Button>
+            <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">{t('placeOrder')}</Button>
           </form>
         </Form>
       </div>

@@ -9,6 +9,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
+import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -29,6 +30,7 @@ export default function SignupPage() {
   const auth = useAuth();
   const { user, loading } = useUser();
   const router = useRouter();
+  const t = useTranslations('SignupPage');
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -75,7 +77,7 @@ export default function SignupPage() {
   if (loading || (!loading && user)) {
     return (
       <div className="flex items-center justify-center min-h-[calc(100vh-8rem)]">
-        Chargement...
+        {t('loading')}
       </div>
     );
   }
@@ -85,16 +87,16 @@ export default function SignupPage() {
       <Card className="mx-auto max-w-sm">
         <CardHeader className="items-center text-center">
           <Logo className="mb-4" />
-          <CardTitle className="text-2xl">Sign Up</CardTitle>
+          <CardTitle className="text-2xl">{t('title')}</CardTitle>
           <CardDescription>
-            Enter your information to create an account
+            {t('description')}
           </CardDescription>
         </CardHeader>
         <CardContent>
           {error && (
             <Alert variant="destructive" className="mb-4">
               <Terminal className="h-4 w-4" />
-              <AlertTitle>Signup Failed</AlertTitle>
+              <AlertTitle>{t('errorTitle')}</AlertTitle>
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
@@ -102,7 +104,7 @@ export default function SignupPage() {
             <div className="grid gap-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
-                  <Label htmlFor="first-name">First name</Label>
+                  <Label htmlFor="first-name">{t('firstName')}</Label>
                   <Input
                     id="first-name"
                     placeholder="Max"
@@ -112,7 +114,7 @@ export default function SignupPage() {
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="last-name">Last name</Label>
+                  <Label htmlFor="last-name">{t('lastName')}</Label>
                   <Input
                     id="last-name"
                     placeholder="Robinson"
@@ -123,7 +125,7 @@ export default function SignupPage() {
                 </div>
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t('email')}</Label>
                 <Input
                   id="email"
                   type="email"
@@ -134,7 +136,7 @@ export default function SignupPage() {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t('password')}</Label>
                 <Input
                   id="password"
                   type="password"
@@ -144,7 +146,7 @@ export default function SignupPage() {
                 />
               </div>
               <Button type="submit" className="w-full">
-                Create an account
+                {t('createAccountButton')}
               </Button>
             </div>
           </form>
@@ -154,7 +156,7 @@ export default function SignupPage() {
             </div>
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-background px-2 text-muted-foreground">
-                Or continue with
+                {t('orContinueWith')}
               </span>
             </div>
           </div>
@@ -163,12 +165,12 @@ export default function SignupPage() {
             className="w-full"
             onClick={handleGoogleSignup}
           >
-            Sign up with Google
+            {t('googleSignupButton')}
           </Button>
           <div className="mt-4 text-center text-sm">
-            Already have an account?{' '}
+            {t('alreadyHaveAccount')}{' '}
             <Link href="/login" className="underline">
-              Login
+              {t('loginLink')}
             </Link>
           </div>
         </CardContent>

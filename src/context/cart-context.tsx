@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useMemo, ReactNode } from "
 import { type CartItem, type Product } from "@/lib/types";
 import { useToast } from "@/hooks/use-toast";
 import { products as allProducts } from "@/lib/data";
+import { useTranslations } from "next-intl";
 
 interface CartContextType {
   cartItems: CartItem[];
@@ -28,6 +29,7 @@ export const useCart = () => {
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const { toast } = useToast();
+  const t = useTranslations('Cart');
 
   const addToCart = (productId: string, quantity: number) => {
     const product = allProducts.find((p) => p.id === productId);
@@ -46,8 +48,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
     
     toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
+      title: t('toastTitle'),
+      description: t('toastDescription', {productName: product.name}),
     });
   };
 

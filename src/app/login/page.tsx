@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -29,6 +30,7 @@ export default function LoginPage() {
   const auth = useAuth();
   const { user, loading } = useUser();
   const router = useRouter();
+  const t = useTranslations('LoginPage');
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -66,7 +68,7 @@ export default function LoginPage() {
   if (loading || (!loading && user)) {
     return (
       <div className="flex items-center justify-center min-h-[calc(100vh-8rem)]">
-        Chargement...
+        {t('loading')}
       </div>
     );
   }
@@ -76,23 +78,21 @@ export default function LoginPage() {
       <Card className="mx-auto max-w-sm">
         <CardHeader className="items-center text-center">
           <Logo className="mb-4" />
-          <CardTitle className="text-2xl">Login</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
-          </CardDescription>
+          <CardTitle className="text-2xl">{t('title')}</CardTitle>
+          <CardDescription>{t('description')}</CardDescription>
         </CardHeader>
         <CardContent>
           {error && (
             <Alert variant="destructive" className="mb-4">
               <Terminal className="h-4 w-4" />
-              <AlertTitle>Login Failed</AlertTitle>
+              <AlertTitle>{t('errorTitle')}</AlertTitle>
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
           <form onSubmit={handleEmailPasswordLogin}>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t('email')}</Label>
                 <Input
                   id="email"
                   type="email"
@@ -104,12 +104,12 @@ export default function LoginPage() {
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">{t('password')}</Label>
                   <Link
                     href="#"
                     className="ml-auto inline-block text-sm underline"
                   >
-                    Forgot your password?
+                    {t('forgotPassword')}
                   </Link>
                 </div>
                 <Input
@@ -121,7 +121,7 @@ export default function LoginPage() {
                 />
               </div>
               <Button type="submit" className="w-full">
-                Login
+                {t('loginButton')}
               </Button>
             </div>
           </form>
@@ -131,7 +131,7 @@ export default function LoginPage() {
             </div>
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-background px-2 text-muted-foreground">
-                Or continue with
+                {t('orContinueWith')}
               </span>
             </div>
           </div>
@@ -140,12 +140,12 @@ export default function LoginPage() {
             className="w-full"
             onClick={handleGoogleLogin}
           >
-            Login with Google
+            {t('googleLoginButton')}
           </Button>
           <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{' '}
+            {t('noAccount')}{' '}
             <Link href="/signup" className="underline">
-              Sign up
+              {t('signUpLink')}
             </Link>
           </div>
         </CardContent>
