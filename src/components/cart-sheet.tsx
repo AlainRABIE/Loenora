@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { products } from "@/lib/data";
 import { X, Minus, Plus } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { useTranslations } from "next-intl";
@@ -33,20 +34,20 @@ export default function CartSheet() {
           <ScrollArea className="flex-1">
             <div className="flex flex-col gap-6 px-6 py-4">
             {cartItems.map((item) => {
-              const image = PlaceHolderImages.find(img => img.id === item.imageId);
+              const product = products.find(p => p.id === item.id);
+              const productImage = product?.images?.[0]?.url || 
+                PlaceHolderImages.find(img => img.id === item.imageId)?.imageUrl || 
+                '/default-product.jpg';
               return (
                 <div key={item.id} className="flex items-start gap-4">
-                  {image && (
-                    <div className="relative h-20 w-20 overflow-hidden rounded-md">
-                        <Image
-                            src={image.imageUrl}
-                            alt={item.name}
-                            data-ai-hint={image.imageHint}
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                  )}
+                  <div className="relative h-20 w-20 overflow-hidden rounded-md">
+                    <Image
+                      src={productImage}
+                      alt={item.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                   <div className="flex-1 space-y-2">
                     <Link href={`/products/${item.slug}`} className="font-semibold hover:underline">
                       {item.name}

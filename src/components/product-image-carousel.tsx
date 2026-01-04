@@ -59,6 +59,7 @@ export default function ProductImageCarousel({
                     src={image.url}
                     alt={`${productName} - ${image.color}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
                     priority={index === 0}
                   />
@@ -87,6 +88,7 @@ export default function ProductImageCarousel({
                 src={image.url}
                 alt={`Miniature ${index + 1}`}
                 fill
+                sizes="80px"
                 className="object-cover"
               />
             </button>

@@ -29,9 +29,14 @@ export const products: Product[] = [
     description: 'Une cape jacket chic et polyvalente, idéale pour superposer vos tenues avec style.',
     price: 85,
     category: 'Vestes',
-    imageId: 'product-9',
+    images: [
+      { color: 'Marron', url: '/Cape/default.jpg' },
+      { color: 'Marron', url: '/Cape/856b1a4d-e88d-4d5b-abdd-d17ca7665b62.JPEG' },
+      { color: 'Marron', url: '/Cape/a6b3f7d2-5bbc-4cd6-98d0-87937393ff4a.JPEG' },
+      { color: 'Marron', url: '/Cape/e0253a41-7bb0-4731-bb2f-cfbb617f0974.JPEG' },
+    ],
     slug: 'capes-jacket',
-    colors: ['Noir', 'Camel', 'Gris chiné'],
+    colors: ['Marron'],
   }
 ];
 

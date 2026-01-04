@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { useTranslations } from 'next-intl';
+import { createUserProfile } from '@/firebase/users';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -56,6 +57,17 @@ export default function SignupPage() {
       await updateProfile(userCredential.user, {
         displayName: `${firstName} ${lastName}`,
       });
+      
+      // Créer le profil utilisateur dans Firestore
+      await createUserProfile(
+        userCredential.user.uid,
+        email,
+        'user',
+        {
+          displayName: `${firstName} ${lastName}`,
+        }
+      );
+      
       router.push('/account');
     } catch (error: any) {
       console.error('Error during email/password signup:', error);
@@ -66,7 +78,18 @@ export default function SignupPage() {
   const handleGoogleSignup = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      
+      // Créer le profil utilisateur dans Firestore
+      await createUserProfile(
+        result.user.uid,
+        result.user.email || '',
+        'user',
+        {
+          displayName: result.user.displayName || '',
+        }
+      );
+      
       router.push('/account');
     } catch (error) {
       console.error('Error during Google signup:', error);

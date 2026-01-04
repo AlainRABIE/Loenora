@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { products } from "@/lib/data";
 import ProductCard from "@/components/product-card";
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import InitializeCollectionsButton from "@/components/admin/initialize-collections-button";
 
 export default function HomePage() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-image');
@@ -42,6 +43,9 @@ export default function HomePage() {
                   Explorer les collections <ArrowRight className="ml-2" />
                 </Link>
               </Button>
+            </div>
+            <div className="mt-6">
+              <InitializeCollectionsButton />
             </div>
           </div>
         </div>

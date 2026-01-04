@@ -22,23 +22,24 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { orders } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { OrderStatus } from '@/lib/types';
 import { useUser, useAuth } from '@/firebase';
+import { getUserOrders, type OrderData } from '@/firebase/orders';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { signOut, updateProfile } from 'firebase/auth';
 import { useTranslations } from 'next-intl';
 import { useToast } from '@/hooks/use-toast';
+import Image from 'next/image';
+import { products } from '@/lib/data';
 
-const statusColors: Record<OrderStatus, string> = {
-  Pending: 'bg-yellow-500',
-  Processing: 'bg-blue-500',
-  Shipped: 'bg-green-500',
-  Delivered: 'bg-gray-500',
-  Cancelled: 'bg-red-500',
+const statusColors: Record<string, string> = {
+  pending: 'bg-yellow-500',
+  processing: 'bg-blue-500',
+  shipped: 'bg-green-500',
+  delivered: 'bg-gray-500',
+  cancelled: 'bg-red-500',
 };
 
 function EditProfileDialog() {
@@ -114,12 +115,33 @@ export default function AccountPage() {
   const auth = useAuth();
   const router = useRouter();
   const t = useTranslations('AccountPage');
+  const [userOrders, setUserOrders] = useState<OrderData[]>([]);
+  const [loadingOrders, setLoadingOrders] = useState(true);
 
   useEffect(() => {
     if (!loading && !user) {
       router.push('/login');
     }
   }, [user, loading, router]);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      if (user?.email) {
+        try {
+          const orders = await getUserOrders(user.email);
+          setUserOrders(orders);
+        } catch (error) {
+          console.error('Error fetching orders:', error);
+        } finally {
+          setLoadingOrders(false);
+        }
+      }
+    };
+
+    if (user) {
+      fetchOrders();
+    }
+  }, [user]);
 
   const handleLogout = async () => {
     try {
@@ -134,8 +156,6 @@ export default function AccountPage() {
     return <div className="flex items-center justify-center min-h-[calc(100vh-8rem)]">{t('loading')}</div>;
   }
 
-  const userOrders = orders.slice(0, 3); // Mock: show first 3 orders for this user
-
   return (
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-3xl md:text-4xl font-bold mb-8">{t('title')}</h1>
@@ -147,41 +167,79 @@ export default function AccountPage() {
               <CardDescription>{t('orderHistoryDescription')}</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
-                {userOrders.map((order) => (
-                  <div
-                    key={order.id}
-                    className="p-4 border rounded-lg flex flex-col sm:flex-row justify-between sm:items-center gap-4"
-                  >
-                    <div className="space-y-1">
-                      <p className="font-semibold">{t('orderNumber', {id: order.id})}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {t('orderDate', {date: order.date})}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {t('orderTotal', {total: order.total.toFixed(2)})}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <Badge variant="secondary" className="flex items-center gap-2">
-                        <span
-                          className={`h-2 w-2 rounded-full ${
-                            statusColors[order.status]
-                          }`}
-                        ></span>
-                        {order.status}
-                      </Badge>
-                      <Button variant="outline" size="sm" asChild>
-                        <Link href="#">{t('viewDetails')}</Link>
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              {loadingOrders ? (
+                <div className="text-center py-8">{t('loading')}</div>
+              ) : userOrders.length === 0 ? (
+                <div className="text-center py-8">
+                  <p className="text-muted-foreground">{t('noOrders') || 'Aucune commande pour le moment'}</p>
+                  <Button asChild className="mt-4">
+                    <Link href="/products">{t('startShopping') || 'Commencer vos achats'}</Link>
+                  </Button>
+                </div>
+              ) : (
+                <div className="space-y-6">
+                  {userOrders.map((order: any) => {
+                    const orderDate = order.createdAt?.toDate ? order.createdAt.toDate().toLocaleDateString() : 'N/A';
+                    return (
+                      <div
+                        key={order.id}
+                        className="p-4 border rounded-lg space-y-4"
+                      >
+                        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                          <div className="space-y-1">
+                            <p className="font-semibold">{t('orderNumber', {id: order.id}) || `Commande #${order.id.slice(0, 8)}`}</p>
+                            <p className="text-sm text-muted-foreground">
+                              {orderDate}
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <Badge className={statusColors[order.status] || 'bg-gray-500'}>
+                              {order.status}
+                            </Badge>
+                            <p className="font-bold">{order.total.toFixed(2)} TND</p>
+                          </div>
+                        </div>
+                        
+                        {/* Afficher les articles de la commande */}
+                        <div className="space-y-2 border-t pt-4">
+                          {order.items.map((item: any, idx: number) => {
+                            const product = products.find(p => p.id === item.id);
+                            const productImage = product?.images?.[0]?.url || '/default-product.jpg';
+                            return (
+                              <div key={idx} className="flex items-center gap-3">
+                                <div className="relative h-12 w-12 rounded overflow-hidden">
+                                  <Image
+                                    src={productImage}
+                                    alt={item.name}
+                                    fill
+                                    sizes="48px"
+                                    className="object-cover"
+                                  />
+                                </div>
+                                <div className="flex-1">
+                                  <p className="text-sm font-medium">{item.name}</p>
+                                  <p className="text-xs text-muted-foreground">Quantité: {item.quantity}</p>
+                                </div>
+                                <p className="text-sm font-medium">{(item.price * item.quantity).toFixed(2)} TND</p>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        
+                        {/* Bouton Voir détails */}
+                        <div className="border-t pt-4">
+                          <Button asChild variant="outline" className="w-full">
+                            <Link href={`/account/orders/${order.id}`}>
+                              Voir les informations complètes
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </CardContent>
-            <CardFooter>
-              <Button variant="secondary">{t('viewAllOrders')}</Button>
-            </CardFooter>
           </Card>
         </div>
 
@@ -195,15 +253,6 @@ export default function AccountPage() {
                 <p>{user.displayName || t('noName')}</p>
                 <p className="text-muted-foreground">
                   {user.email}
-                </p>
-              </div>
-              <Separator />
-              <div>
-                <p className="font-medium">{t('shippingAddress')}</p>
-                <p className="text-muted-foreground">
-                  123 Main St
-                  <br />
-                  Anytown, USA 12345
                 </p>
               </div>
             </CardContent>

@@ -6,6 +6,9 @@ import { z } from "zod";
 import { useCart } from "@/context/cart-context";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { products } from "@/lib/data";
+import { createOrder } from "@/firebase/orders";
+import { useUser } from "@/firebase/auth/use-user";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -46,11 +49,12 @@ export default function CheckoutPage() {
   const { toast } = useToast();
   const router = useRouter();
   const t = useTranslations('CheckoutPage');
+  const { user } = useUser();
 
   const form = useForm<z.infer<typeof checkoutSchema>>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
-      email: "",
+      email: user?.email || "",
       firstName: "",
       lastName: "",
       address: "",
@@ -67,14 +71,43 @@ export default function CheckoutPage() {
   const shippingCost = cartTotal > 50 ? 0 : 9.99;
   const total = cartTotal + shippingCost;
 
-  function onSubmit(values: z.infer<typeof checkoutSchema>) {
-    console.log(values);
-    toast({
-      title: t('orderPlacedTitle'),
-      description: t('orderPlacedDescription'),
-    });
-    clearCart();
-    router.push("/");
+  async function onSubmit(values: z.infer<typeof checkoutSchema>) {
+    try {
+      // Créer la commande dans Firebase
+      const orderId = await createOrder({
+        userId: user?.uid,
+        userEmail: values.email,
+        items: cartItems,
+        shippingInfo: {
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          address: values.address,
+          city: values.city,
+          state: values.state,
+          zip: values.zip,
+          country: values.country,
+        },
+        subtotal: cartTotal,
+        shipping: shippingCost,
+        total: total,
+      });
+
+      toast({
+        title: t('orderPlacedTitle'),
+        description: t('orderPlacedDescription') + ` (ID: ${orderId})`,
+      });
+      
+      clearCart();
+      router.push("/account");
+    } catch (error) {
+      console.error('Error creating order:', error);
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue lors de la création de votre commande.",
+        variant: "destructive",
+      });
+    }
   }
 
   return (
@@ -87,12 +120,15 @@ export default function CheckoutPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {cartItems.map((item) => {
-              const image = PlaceHolderImages.find(img => img.id === item.imageId);
+              const product = products.find(p => p.id === item.id);
+              const productImage = product?.images?.[0]?.url || 
+                PlaceHolderImages.find(img => img.id === item.imageId)?.imageUrl || 
+                '/default-product.jpg';
               return (
                 <div key={item.id} className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="relative h-16 w-16 rounded-md overflow-hidden border">
-                      {image && <Image src={image.imageUrl} alt={item.name} fill className="object-cover" />}
+                      <Image src={productImage} alt={item.name} fill className="object-cover" />
                     </div>
                     <div>
                       <p className="font-semibold">{item.name}</p>

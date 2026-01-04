@@ -48,6 +48,7 @@ export default function ProductDetailClient({
               src={productImage}
               alt={product.name}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
@@ -118,6 +119,7 @@ export default function ProductDetailClient({
                           alt={color}
                           width={16}
                           height={16}
+                          sizes="16px"
                           className="object-cover"
                         />
                       </div>

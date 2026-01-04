@@ -1,0 +1,14 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ⚠️ RÈGLES TEMPORAIRES - TOUT LE MONDE PEUT LIRE/ÉCRIRE
+    // ⚠️ NE PAS UTILISER EN PRODUCTION!
+    // ⚠️ REMPLACER PAR DES RÈGLES SÉCURISÉES AVANT LE DÉPLOIEMENT FINAL
+    
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
