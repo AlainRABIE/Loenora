@@ -1,22 +1,54 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+'use client';
+
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import Logo from "@/components/logo";
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import Logo from '@/components/logo';
+import { useUser, useAuth } from '@/firebase';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function LoginPage() {
+  const auth = useAuth();
+  const { user, loading } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.push('/account');
+    }
+  }, [user, loading, router]);
+
+
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      router.push('/account');
+    } catch (error) {
+      console.error('Error during Google login:', error);
+    }
+  };
+
+  if (loading || (!loading && user)) {
+    return <div className="flex items-center justify-center min-h-[calc(100vh-8rem)]">Chargement...</div>;
+  }
+
+
   return (
     <div className="flex items-center justify-center min-h-[calc(100vh-8rem)] py-12">
       <Card className="mx-auto max-w-sm">
         <CardHeader className="items-center text-center">
-            <Logo className="mb-4"/>
+          <Logo className="mb-4" />
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
             Enter your email below to login to your account
@@ -45,12 +77,12 @@ export default function LoginPage() {
             <Button type="submit" className="w-full">
               Login
             </Button>
-            <Button variant="outline" className="w-full">
+            <Button variant="outline" className="w-full" onClick={handleGoogleLogin}>
               Login with Google
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{" "}
+            Don&apos;t have an account?{' '}
             <Link href="/signup" className="underline">
               Sign up
             </Link>
@@ -60,4 +92,3 @@ export default function LoginPage() {
     </div>
   );
 }
-

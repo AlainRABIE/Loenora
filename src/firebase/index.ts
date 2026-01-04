@@ -21,3 +21,4 @@ const firestore = getFirestore(app);
 
 export { app as firebaseApp, auth, firestore };
 export * from './provider';
+export * from './auth/use-user';

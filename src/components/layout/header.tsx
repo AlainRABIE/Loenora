@@ -23,6 +23,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useUser } from '@/firebase/auth/use-user';
 // import { ThemeToggle } from '../theme-toggle'; // Removed
 
 const navLinks = [
@@ -69,6 +70,7 @@ function LanguageSwitcher() {
 export default function Header() {
   const { totalItems } = useCart();
   const t = useTranslations('Header');
+  const { user } = useUser();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -98,7 +100,7 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-2">
             {/* <ThemeToggle /> */}
-            <Link href="/login">
+            <Link href={user ? "/account" : "/login"}>
                 <Button size="icon" variant="ghost" asChild={false}>
                     <User className="h-5 w-5" />
                     <span className="sr-only">{t('myAccount')}</span>
