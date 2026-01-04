@@ -16,7 +16,10 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
-  const image = PlaceHolderImages.find(img => img.id === product.imageId);
+  // Utiliser les images du produit ou chercher dans PlaceHolderImages ou utiliser l'image par défaut
+  const productImage = product.images?.[0]?.url || 
+    PlaceHolderImages.find(img => img.id === product.imageId)?.imageUrl || 
+    '/default-product.jpg';
   const t = useTranslations('ProductCard');
 
   return (
@@ -24,15 +27,12 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link href={`/products/${product.slug}`} className="group">
         <CardHeader className="p-0">
           <div className="relative h-60 w-full overflow-hidden">
-            {image && (
-                <Image
-                    src={image.imageUrl}
-                    alt={product.name}
-                    data-ai-hint={image.imageHint}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-            )}
+            <Image
+              src={productImage}
+              alt={product.name}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
           </div>
         </CardHeader>
         <CardContent className="p-4 flex-1">

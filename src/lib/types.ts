@@ -5,7 +5,8 @@ export type Product = {
   price: number;
   originalPrice?: number;
   category: string;
-  imageId: string;
+  imageId?: string;
+  images?: { color: string; url: string }[];
   slug: string;
   colors?: string[];
 };

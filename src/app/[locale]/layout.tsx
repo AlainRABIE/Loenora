@@ -11,7 +11,7 @@ import { FirebaseClientProvider } from "@/firebase/client-provider";
 
 type Props = {
     children: ReactNode;
-    params: {locale: string};
+    params: Promise<{locale: string}>;
 };
 
 function ClientLayout({ children, locale, messages }: { children: ReactNode, locale: string, messages: any }) {
@@ -37,10 +37,11 @@ function ClientLayout({ children, locale, messages }: { children: ReactNode, loc
 
 
 export default async function LocaleLayout({children, params}: Props) {
+    const { locale } = await params;
     const messages = await getMessages();
 
     return (
-        <ClientLayout locale={params.locale} messages={messages}>
+        <ClientLayout locale={locale} messages={messages}>
           {children}
         </ClientLayout>
     );
