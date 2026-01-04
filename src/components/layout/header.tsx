@@ -84,12 +84,6 @@ export default function Header() {
               {t(link.labelKey as any)}
             </Link>
           ))}
-          <Link
-            href="/admin/orders"
-            className="text-accent/80 transition-colors hover:text-accent"
-          >
-            {t('adminPanel')}
-          </Link>
         </nav>
         <div className="flex flex-1 items-center justify-end gap-4">
           <div className="hidden md:flex flex-1 max-w-xs items-center gap-2">
@@ -150,12 +144,6 @@ export default function Header() {
                       {t(link.labelKey as any)}
                     </Link>
                   ))}
-                   <Link
-                    href="/admin/orders"
-                    className="text-accent/80 transition-colors hover:text-accent"
-                  >
-                    {t('adminPanel')}
-                  </Link>
                 </nav>
               </SheetContent>
             </Sheet>
