@@ -1,6 +1,6 @@
-"use client"
 import { ReactNode } from "react";
 import {NextIntlClientProvider, useMessages} from 'next-intl';
+import {getMessages} from 'next-intl/server';
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/toaster";
@@ -12,9 +12,7 @@ type Props = {
     params: {locale: string};
 };
 
-export default function LocaleLayout({children, params: {locale}}: Props) {
-    const messages = useMessages();
-
+function ClientLayout({ children, locale, messages }: { children: ReactNode, locale: string, messages: any }) {
     return (
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider>
@@ -28,5 +26,16 @@ export default function LocaleLayout({children, params: {locale}}: Props) {
             </CartProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
+    );
+}
+
+
+export default async function LocaleLayout({children, params}: Props) {
+    const messages = await getMessages();
+
+    return (
+        <ClientLayout locale={params.locale} messages={messages}>
+          {children}
+        </ClientLayout>
     );
 }
