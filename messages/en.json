@@ -71,7 +71,14 @@
         "noName": "No Name",
         "shippingAddress": "Shipping Address",
         "editProfile": "Edit Profile",
-        "logOut": "Log Out"
+        "logOut": "Log Out",
+        "editProfileDescription": "Make changes to your profile here. Click save when you're done.",
+        "nameLabel": "Name",
+        "cancelButton": "Cancel",
+        "saveChangesButton": "Save changes",
+        "profileUpdatedTitle": "Profile Updated",
+        "profileUpdatedDescription": "Your profile information has been successfully updated.",
+        "updateErrorTitle": "Update Failed"
     },
     "CheckoutPage": {
         "title": "Checkout",

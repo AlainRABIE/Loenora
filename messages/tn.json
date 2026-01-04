@@ -71,7 +71,14 @@
         "noName": "لا يوجد اسم",
         "shippingAddress": "عنوان الشحن",
         "editProfile": "تعديل الملف الشخصي",
-        "logOut": "تسجيل الخروج"
+        "logOut": "تسجيل الخروج",
+        "editProfileDescription": "قم بإجراء تغييرات على ملفك الشخصي هنا. انقر فوق حفظ عند الانتهاء.",
+        "nameLabel": "الاسم",
+        "cancelButton": "إلغاء",
+        "saveChangesButton": "حفظ التغييرات",
+        "profileUpdatedTitle": "تم تحديث الملف الشخصي",
+        "profileUpdatedDescription": "تم تحديث معلومات ملفك الشخصي بنجاح.",
+        "updateErrorTitle": "فشل التحديث"
     },
     "CheckoutPage": {
         "title": "الدفع",
