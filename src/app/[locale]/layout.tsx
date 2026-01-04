@@ -6,6 +6,7 @@ import Footer from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { CartProvider } from "@/context/cart-context";
 import { ThemeProvider } from "@/components/theme-provider";
+import ClientOnly from "@/components/client-only";
 
 type Props = {
     children: ReactNode;
@@ -18,7 +19,9 @@ function ClientLayout({ children, locale, messages }: { children: ReactNode, loc
           <ThemeProvider>
             <CartProvider>
                 <div className="relative flex min-h-dvh flex-col bg-background">
-                  <Header />
+                  <ClientOnly>
+                    <Header />
+                  </ClientOnly>
                   <main className="flex-1">{children}</main>
                   <Footer />
                 </div>
