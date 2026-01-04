@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Search, ShoppingCart, User, Menu, Globe } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,6 +23,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+// import { ThemeToggle } from '../theme-toggle'; // Removed
 
 const navLinks = [
   { href: "/products", labelKey: "allProducts" },
@@ -35,11 +36,10 @@ function LanguageSwitcher() {
     const pathname = usePathname();
 
     const handleLocaleChange = (newLocale: string) => {
-      // This will replace the current path with the new locale
-      // e.g., /en/about -> /fr/about
-      // This is a naive implementation. For a more robust solution,
-      // you might want to use a library to handle path translations.
-      const newPath = `/${newLocale}${pathname.substring(3)}`;
+      const newPath = pathname.startsWith('/fr') || pathname.startsWith('/en') || pathname.startsWith('/tn')
+          ? `/${newLocale}${pathname.substring(3)}`
+          : `/${newLocale}${pathname}`;
+
       router.replace(newPath);
     };
 
@@ -103,6 +103,7 @@ export default function Header() {
             </Button>
           </div>
           <div className="flex items-center gap-2">
+            {/* <ThemeToggle /> */}
             <Link href="/login">
                 <Button size="icon" variant="ghost" asChild={false}>
                     <User className="h-5 w-5" />
