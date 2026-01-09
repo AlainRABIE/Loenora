@@ -36,4 +36,9 @@ export type User = {
   id: string;
   name: string;
   email: string;
+  role: 'admin' | 'user';
+  displayName?: string;
+  phone?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 };

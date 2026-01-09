@@ -111,7 +111,7 @@ function EditProfileDialog() {
 
 
 export default function AccountPage() {
-  const { user, loading } = useUser();
+  const { user, userProfile, isAdmin, loading } = useUser();
   const auth = useAuth();
   const router = useRouter();
   const t = useTranslations('AccountPage');
@@ -250,11 +250,27 @@ export default function AccountPage() {
             </CardHeader>
             <CardContent className="space-y-4 text-sm">
               <div className="font-medium">
-                <p>{user.displayName || t('noName')}</p>
+                <div className="flex items-center gap-2 mb-1">
+                  <p>{user.displayName || t('noName')}</p>
+                  {isAdmin && (
+                    <Badge variant="default" className="bg-amber-500">
+                      Admin
+                    </Badge>
+                  )}
+                </div>
                 <p className="text-muted-foreground">
                   {user.email}
                 </p>
               </div>
+              {isAdmin && (
+                <div className="pt-4 border-t">
+                  <Button asChild className="w-full" variant="secondary">
+                    <Link href="/admin">
+                      {t('adminPanel') || 'Panneau d\'administration'}
+                    </Link>
+                  </Button>
+                </div>
+              )}
             </CardContent>
             <CardFooter className="flex gap-2">
               <EditProfileDialog />

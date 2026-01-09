@@ -3,12 +3,61 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
-    // ⚠️ RÈGLES TEMPORAIRES - TOUT LE MONDE PEUT LIRE/ÉCRIRE
-    // ⚠️ NE PAS UTILISER EN PRODUCTION!
-    // ⚠️ REMPLACER PAR DES RÈGLES SÉCURISÉES AVANT LE DÉPLOIEMENT FINAL
+    // Fonction helper pour vérifier si l'utilisateur est admin
+    function isAdmin() {
+      return request.auth != null && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
     
+    // Fonction helper pour vérifier si l'utilisateur est authentifié
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Fonction helper pour vérifier si c'est le propriétaire
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Collection users
+    match /users/{userId} {
+      // Tout le monde peut lire les profils publics
+      allow read: if isAuthenticated();
+      // Les utilisateurs peuvent créer leur propre profil
+      allow create: if isAuthenticated() && isOwner(userId) && request.resource.data.role == 'user';
+      // Les utilisateurs peuvent mettre à jour leur propre profil (sauf le rôle)
+      allow update: if isOwner(userId) && request.resource.data.role == resource.data.role;
+      // Seuls les admins peuvent supprimer des utilisateurs ou modifier les rôles
+      allow delete, update: if isAdmin();
+    }
+    
+    // Collection orders
+    match /orders/{orderId} {
+      // Les utilisateurs peuvent lire leurs propres commandes
+      allow read: if isOwner(resource.data.userId) || isAdmin();
+      // Les utilisateurs peuvent créer leurs propres commandes
+      allow create: if isAuthenticated() && isOwner(request.resource.data.userId);
+      // Seuls les admins peuvent mettre à jour ou supprimer les commandes
+      allow update, delete: if isAdmin();
+    }
+    
+    // Collection addresses
+    match /addresses/{addressId} {
+      // Les utilisateurs peuvent lire leurs propres adresses
+      allow read: if isOwner(resource.data.userId) || isAdmin();
+      // Les utilisateurs peuvent créer/modifier/supprimer leurs propres adresses
+      allow create, update, delete: if isAuthenticated() && isOwner(request.resource.data.userId);
+    }
+    
+    // Collection products (lecture seule pour tous, écriture pour admin)
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Bloquer tous les autres accès
     match /{document=**} {
-      allow read, write: if true;
+      allow read, write: if false;
     }
   }
 }

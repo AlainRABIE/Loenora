@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Search, ShoppingCart, User, Menu, Globe } from "lucide-react";
+import { Search, ShoppingCart, User, Menu, Globe, Shield } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
@@ -22,6 +22,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
 import { useUser } from '@/firebase/auth/use-user';
 // import { ThemeToggle } from '../theme-toggle'; // Removed
@@ -70,7 +71,7 @@ function LanguageSwitcher() {
 export default function Header() {
   const { totalItems } = useCart();
   const t = useTranslations('Header');
-  const { user } = useUser();
+  const { user, isAdmin } = useUser();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -100,6 +101,14 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-2">
             {/* <ThemeToggle /> */}
+            {isAdmin && (
+              <Link href="/admin">
+                <Button size="icon" variant="ghost" title="Administration">
+                  <Shield className="h-5 w-5" />
+                  <span className="sr-only">Administration</span>
+                </Button>
+              </Link>
+            )}
             <Link href={user ? "/account" : "/login"}>
                 <Button size="icon" variant="ghost" asChild={false}>
                     <User className="h-5 w-5" />

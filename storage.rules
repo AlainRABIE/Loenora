@@ -1,0 +1,42 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Fonction helper pour vérifier si l'utilisateur est admin
+    function isAdmin() {
+      return request.auth != null && 
+             firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Fonction helper pour vérifier si l'utilisateur est authentifié
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Fonction helper pour valider les fichiers image
+    function isValidImage() {
+      return request.resource.size < 5 * 1024 * 1024 // 5MB max
+             && request.resource.contentType.matches('image/.*');
+    }
+    
+    // Dossier products - seuls les admins peuvent uploader/supprimer
+    match /products/{allPaths=**} {
+      allow read: if true; // Tout le monde peut lire les images des produits
+      allow write: if isAdmin() && isValidImage();
+      allow delete: if isAdmin();
+    }
+    
+    // Dossier users - les utilisateurs peuvent gérer leurs propres images
+    match /users/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && request.auth.uid == userId && isValidImage();
+      allow delete: if isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Bloquer tous les autres accès
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

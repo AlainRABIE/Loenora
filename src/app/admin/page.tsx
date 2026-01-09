@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@/firebase/auth/use-user';
-import { isUserAdmin } from '@/firebase/users';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import UserManagement from '@/components/admin/user-management';
 import { useToast } from '@/hooks/use-toast';
@@ -12,32 +11,25 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 
 export default function AdminPage() {
-  const { user, loading } = useUser();
+  const { user, isAdmin, loading } = useUser();
   const router = useRouter();
   const { toast } = useToast();
 
   useEffect(() => {
-    const checkAdmin = async () => {
-      if (!loading && !user) {
-        router.push('/login');
-        return;
-      }
+    if (!loading && !user) {
+      router.push('/login');
+      return;
+    }
 
-      if (user) {
-        const isAdmin = await isUserAdmin(user.uid);
-        if (!isAdmin) {
-          router.push('/');
-          toast({
-            title: 'Accès refusé',
-            description: 'Vous n\'avez pas les permissions pour accéder à cette page.',
-            variant: 'destructive',
-          });
-        }
-      }
-    };
-
-    checkAdmin();
-  }, [user, loading, router, toast]);
+    if (!loading && user && !isAdmin) {
+      router.push('/');
+      toast({
+        title: 'Accès refusé',
+        description: 'Vous n\'avez pas les permissions pour accéder à cette page.',
+        variant: 'destructive',
+      });
+    }
+  }, [user, isAdmin, loading, router, toast]);
 
   if (loading) {
     return (
@@ -45,6 +37,10 @@ export default function AdminPage() {
         <p>Chargement...</p>
       </div>
     );
+  }
+
+  if (!isAdmin) {
+    return null;
   }
 
   return (
@@ -60,12 +56,15 @@ export default function AdminPage() {
         <p className="text-muted-foreground">Gérez votre boutique en ligne</p>
       </div>
 
-      <Tabs defaultValue="users" className="space-y-6">
+      <Tabs defaultValue="products" className="space-y-6">
         <TabsList>
-          <TabsTrigger value="users">Utilisateurs</TabsTrigger>
+          <TabsTrigger value="products" asChild>
+            <Link href="/admin/products">Produits</Link>
+          </TabsTrigger>
           <TabsTrigger value="orders" asChild>
             <Link href="/admin/orders">Commandes</Link>
           </TabsTrigger>
+          <TabsTrigger value="users">Utilisateurs</TabsTrigger>
         </TabsList>
 
         <TabsContent value="users" className="space-y-6">
