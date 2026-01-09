@@ -4,6 +4,9 @@ import { Inter, Space_Grotesk, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
+import { FirebaseClientProvider } from "@/firebase/client-provider";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const fontBody = Inter({ subsets: ["latin"], variable: "--font-body" });
 const fontHeadline = Space_Grotesk({ subsets: ["latin"], variable: "--font-headline" });
@@ -17,6 +20,17 @@ export const metadata: Metadata = {
 type Props = {
   children: ReactNode;
 };
+
+function RootLayoutClient({ children }: { children: ReactNode }) {
+  return (
+    <FirebaseClientProvider>
+      <ThemeProvider>
+        {children}
+        <Toaster />
+      </ThemeProvider>
+    </FirebaseClientProvider>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -37,7 +51,9 @@ export default function RootLayout({
           fontCursive.variable
         )}
       >
-        {children}
+        <RootLayoutClient>
+          {children}
+        </RootLayoutClient>
       </body>
     </html>
   );
