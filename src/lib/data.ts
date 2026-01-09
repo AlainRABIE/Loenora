@@ -30,13 +30,26 @@ export const products: Product[] = [
     price: 85,
     category: 'Vestes',
     images: [
-      { color: 'Marron', url: '/Cape/default.jpg' },
-      { color: 'Marron', url: '/Cape/856b1a4d-e88d-4d5b-abdd-d17ca7665b62.JPEG' },
-      { color: 'Marron', url: '/Cape/a6b3f7d2-5bbc-4cd6-98d0-87937393ff4a.JPEG' },
-      { color: 'Marron', url: '/Cape/e0253a41-7bb0-4731-bb2f-cfbb617f0974.JPEG' },
+      // Marron
+      { color: 'Marron', url: '/Cape/Marron/1198b1aa-63ac-4c5b-90b1-af3d574fe7aa.jpeg' },
+      { color: 'Marron', url: '/Cape/Marron/856b1a4d-e88d-4d5b-abdd-d17ca7665b62.jpeg' },
+      { color: 'Marron', url: '/Cape/Marron/a6b3f7d2-5bbc-4cd6-98d0-87937393ff4a.jpeg' },
+      { color: 'Marron', url: '/Cape/Marron/c23a7c44-b850-4659-87dc-d10ae035d11b.jpeg' },
+      { color: 'Marron', url: '/Cape/Marron/e0253a41-7bb0-4731-bb2f-cfbb617f0974.jpeg' },
+      // Beige
+      { color: 'Beige', url: '/Cape/Beige/38bb331a-7183-4958-94d1-f4f85b00713c.jpeg' },
+      { color: 'Beige', url: '/Cape/Beige/5fc138f9-5fc9-442e-855b-b679ea6bf795.jpeg' },
+      { color: 'Beige', url: '/Cape/Beige/ab1cd3ef-24f5-4910-8171-2da85b4409c6.jpeg' },
+      { color: 'Beige', url: '/Cape/Beige/d9b8044b-3e6e-4245-b710-7777cd019844.jpeg' },
+      // Rose
+      { color: 'Rose', url: '/Cape/rose/2a71e53f-aceb-4ab9-a209-d580086064eb.jpeg' },
+      { color: 'Rose', url: '/Cape/rose/481f99fd-64dc-4855-9bd6-95b400f54ab8.jpeg' },
+      { color: 'Rose', url: '/Cape/rose/8fb9aa85-0a72-4fe2-b1b0-2de8d8af5b76.jpeg' },
+      { color: 'Rose', url: '/Cape/rose/fc9e782e-39df-4f1e-a38a-278406a3c90d.jpeg' },
+      { color: 'Rose', url: '/Cape/rose/ff787172-3ac4-48d0-901d-09581a541102.jpeg' },
     ],
     slug: 'capes-jacket',
-    colors: ['Marron'],
+    colors: ['Marron', 'Beige', 'Rose'],
   }
 ];
 
