@@ -1,20 +1,38 @@
 'use client';
 
 import { useUser } from '@/firebase/auth/use-user';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { getAllProducts } from '@/firebase/products';
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ShoppingCart, Package, Users, ShoppingBag, Plus, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { products } from "@/lib/data";
 import ProductCard from "@/components/product-card";
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import InitializeCollectionsButton from "@/components/admin/initialize-collections-button";
+import type { Product } from '@/lib/types';
 
 export default function HomePageClient() {
   const { user, isAdmin, loading, userProfile } = useUser();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-image');
+
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const data = await getAllProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error loading products:', error);
+      } finally {
+        setLoadingProducts(false);
+      }
+    }
+
+    loadProducts();
+  }, []);
 
   useEffect(() => {
     console.log('HomePageClient - user:', user?.email);

@@ -9,6 +9,7 @@ export type Product = {
   images?: { color: string; url: string }[];
   slug: string;
   colors?: string[];
+  isNew?: boolean;
 };
 
 export type CartItem = {

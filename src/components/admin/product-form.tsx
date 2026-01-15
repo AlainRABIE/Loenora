@@ -48,6 +48,7 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
   );
   const [published, setPublished] = useState(product ? (product as any).published !== false : true);
   const [stock, setStock] = useState(((product as any)?.stock || 100).toString());
+  const [isNew, setIsNew] = useState(product?.isNew || false);
 
   // Auto-générer le slug depuis le nom
   useEffect(() => {
@@ -151,6 +152,7 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
         images: images.map(img => ({ color: img.color, url: img.url })),
         published,
         stock: parseInt(stock),
+        isNew,
       };
 
       if (product) {
@@ -170,7 +172,7 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
       if (onSuccess) {
         onSuccess();
       } else {
-        router.push('/admin/products');
+        router.push('/');
       }
     } catch (error) {
       console.error('Error saving product:', error);
@@ -371,10 +373,10 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
 
       <Card>
         <CardHeader>
-          <CardTitle>Publication</CardTitle>
-          <CardDescription>Contrôlez la visibilité du produit</CardDescription>
+          <CardTitle>Publication et statut</CardTitle>
+          <CardDescription>Contrôlez la visibilité et les badges du produit</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-4">
           <div className="flex items-center space-x-2">
             <Switch
               id="published"
@@ -385,11 +387,30 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
               {published ? 'Produit publié' : 'Produit en brouillon'}
             </Label>
           </div>
-          <p className="text-xs text-muted-foreground mt-2">
+          <p className="text-xs text-muted-foreground">
             {published 
               ? 'Le produit est visible sur le site' 
               : 'Le produit n\'est pas visible sur le site'}
           </p>
+          
+          <div className="border-t pt-4">
+            <div className="flex items-center space-x-2">
+              <Switch
+                id="isNew"
+                checked={isNew}
+                onCheckedChange={setIsNew}
+              />
+              <Label htmlFor="isNew" className="flex items-center gap-2">
+                {isNew && <span className="font-cursive text-amber-600 text-lg">✨</span>}
+                Marquer comme nouveauté
+              </Label>
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              {isNew 
+                ? 'Un badge doré "Nouveauté" sera affiché sur le produit' 
+                : 'Aucun badge spécial'}
+            </p>
+          </div>
         </CardContent>
       </Card>
 

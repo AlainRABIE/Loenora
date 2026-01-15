@@ -23,7 +23,14 @@ export default function ProductCard({ product }: ProductCardProps) {
   const t = useTranslations('ProductCard');
 
   return (
-    <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg">
+    <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg relative">
+      {product.isNew && (
+        <div className="absolute top-3 right-3 z-10">
+          <div className="bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 text-white px-4 py-1.5 rounded-full shadow-lg border-2 border-yellow-300">
+            <span className="font-cursive text-lg font-bold tracking-wide">Nouveauté</span>
+          </div>
+        </div>
+      )}
       <Link href={`/products/${product.slug}`} className="group">
         <CardHeader className="p-0">
           <div className="relative h-60 w-full overflow-hidden">

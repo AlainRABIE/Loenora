@@ -1,5 +1,5 @@
-import { products } from "@/lib/data";
 import ProductCard from "@/components/product-card";
+import ProductsList from "@/components/products-list";
 import {
   Select,
   SelectContent,
@@ -57,11 +57,7 @@ export default async function ProductsPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      <ProductsList />
     </div>
   );
 }
