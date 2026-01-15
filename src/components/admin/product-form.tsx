@@ -99,12 +99,28 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
       }
 
       // Vérifier que toutes les images sont uploadées
-      const pendingImages = images.filter(img => !img.url);
+      const pendingImages = images.filter(img => !img.url || img.url === '');
+      
+      // Debug: Afficher les infos dans une alerte
       if (pendingImages.length > 0) {
+        const debugInfo = `Total images: ${images.length}\nImages sans URL: ${pendingImages.length}\n\nImages:\n${images.map((img, i) => `${i+1}. couleur: ${img.color}, url: ${img.url ? 'OUI' : 'NON'}`).join('\n')}`;
+        alert(debugInfo);
+        
         toast({
           variant: 'destructive',
           title: 'Erreur',
-          description: 'Veuillez uploader toutes les images avant de sauvegarder.',
+          description: `Veuillez uploader toutes les images avant de sauvegarder. ${pendingImages.length} image(s) en attente.`,
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Vérifier qu'il y a au moins une image
+      if (images.length === 0) {
+        toast({
+          variant: 'destructive',
+          title: 'Erreur',
+          description: 'Veuillez ajouter au moins une image.',
         });
         setLoading(false);
         return;
@@ -335,7 +351,16 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
           <CardTitle>Images du produit</CardTitle>
           <CardDescription>Ajoutez des images pour chaque couleur</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-4">
+          <Button 
+            type="button" 
+            variant="outline"
+            onClick={() => {
+              alert(`État des images:\n\nTotal: ${images.length}\n\n${images.map((img, i) => `${i+1}. Couleur: ${img.color}\n   URL: ${img.url || 'VIDE'}\n   Preview: ${img.preview ? 'OUI' : 'NON'}\n   File: ${img.file ? 'OUI' : 'NON'}`).join('\n\n')}`);
+            }}
+          >
+            🔍 Debug: Voir l'état des images
+          </Button>
           <ImageUpload
             images={images}
             onImagesChange={setImages}

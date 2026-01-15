@@ -6,6 +6,7 @@ service cloud.firestore {
     // Fonction helper pour vérifier si l'utilisateur est admin
     function isAdmin() {
       return request.auth != null && 
+             exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
     
@@ -21,14 +22,14 @@ service cloud.firestore {
     
     // Collection users
     match /users/{userId} {
-      // Tout le monde peut lire les profils publics
+      // Les utilisateurs authentifiés peuvent lire tous les profils
       allow read: if isAuthenticated();
-      // Les utilisateurs peuvent créer leur propre profil
-      allow create: if isAuthenticated() && isOwner(userId) && request.resource.data.role == 'user';
+      // Les utilisateurs peuvent créer leur propre profil avec n'importe quel rôle lors de l'inscription
+      allow create: if isAuthenticated() && isOwner(userId);
       // Les utilisateurs peuvent mettre à jour leur propre profil (sauf le rôle)
-      allow update: if isOwner(userId) && request.resource.data.role == resource.data.role;
-      // Seuls les admins peuvent supprimer des utilisateurs ou modifier les rôles
-      allow delete, update: if isAdmin();
+      allow update: if (isOwner(userId) && request.resource.data.role == resource.data.role) || isAdmin();
+      // Seuls les admins peuvent supprimer des utilisateurs
+      allow delete: if isAdmin();
     }
     
     // Collection orders

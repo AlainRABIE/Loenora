@@ -35,7 +35,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const translations = {
     reviews: t('reviews', { count: 123 }),
     colors: t('colors'),
-    freeShipping: t('freeShipping'),
+    shipping: t('shipping'),
     warranty: t('warranty'),
     youMightAlsoLike: t('youMightAlsoLike'),
   };

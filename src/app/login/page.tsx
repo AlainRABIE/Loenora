@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { useTranslations } from 'next-intl';
+import { getUserProfile } from '@/firebase/users';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -46,8 +47,13 @@ export default function LoginPage() {
     e.preventDefault();
     setError(null);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      router.push('/account');
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const profile = await getUserProfile(userCredential.user.uid);
+      if (profile?.role === 'admin') {
+        router.push('/');
+      } else {
+        router.push('/account');
+      }
     } catch (error: any) {
       console.error('Error during email/password login:', error);
       setError(error.message);
@@ -57,8 +63,13 @@ export default function LoginPage() {
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
-      router.push('/account');
+      const result = await signInWithPopup(auth, provider);
+      const profile = await getUserProfile(result.user.uid);
+      if (profile?.role === 'admin') {
+        router.push('/');
+      } else {
+        router.push('/account');
+      }
     } catch (error) {
       console.error('Error during Google login:', error);
       setError((error as Error).message);

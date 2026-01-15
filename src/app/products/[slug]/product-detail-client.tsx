@@ -16,7 +16,7 @@ interface ProductDetailClientProps {
   translations: {
     reviews: string;
     colors: string;
-    freeShipping: string;
+    shipping: string;
     warranty: string;
   };
 }
@@ -137,7 +137,7 @@ export default function ProductDetailClient({
         <div className="border-t pt-6 space-y-4">
           <div className="flex items-center gap-3">
             <Truck className="w-6 h-6 text-accent" />
-            <p className="text-sm font-medium">{translations.freeShipping}</p>
+            <p className="text-sm font-medium">{translations.shipping}</p>
           </div>
           <div className="flex items-center gap-3">
             <ShieldCheck className="w-6 h-6 text-accent" />

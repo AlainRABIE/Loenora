@@ -37,7 +37,7 @@
     "ProductPage": {
         "reviews": "({count} مراجعات)",
         "colors": "الألوان",
-        "freeShipping": "شحن مجاني للطلبات التي تزيد عن 50 دولارًا",
+        "shipping": "التوصيل 8 دينار",
         "warranty": "ضمان المصنع لمدة 2 سنوات",
         "youMightAlsoLike": "قد يعجبك ايضا",
         "addToCart": "أضف إلى السلة",

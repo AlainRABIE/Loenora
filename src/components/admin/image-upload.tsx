@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { X, Upload, Image as ImageIcon } from 'lucide-react';
-import { uploadImage, uploadMultipleImages } from '@/firebase/storage';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
 
@@ -28,20 +27,61 @@ export default function ImageUpload({ images, onImagesChange, availableColors }:
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     
     if (files.length === 0) return;
 
-    // Créer des previews pour les nouvelles images
-    const newImages: ImageWithColor[] = files.map(file => ({
-      color: availableColors[0] || '',
-      url: '',
-      file,
-      preview: URL.createObjectURL(file),
-    }));
+    setUploading(true);
 
-    onImagesChange([...images, ...newImages]);
+    try {
+      // Uploader chaque fichier immédiatement
+      const uploadPromises = files.map(async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('folder', 'products');
+
+        const response = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Erreur lors de l\'upload');
+        }
+
+        const uploaded = await response.json();
+        
+        return {
+          color: availableColors[0] || '',
+          url: uploaded.url,
+          path: uploaded.path,
+        };
+      });
+
+      const uploadedImages = await Promise.all(uploadPromises);
+      
+      // Ajouter les images uploadées à la liste
+      onImagesChange([...images, ...uploadedImages]);
+
+      toast({
+        title: 'Images uploadées',
+        description: `${files.length} image(s) uploadée(s) avec succès.`,
+      });
+    } catch (error) {
+      console.error('Error uploading images:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Erreur',
+        description: 'Impossible d\'uploader les images.',
+      });
+    } finally {
+      setUploading(false);
+      // Réinitialiser l'input pour pouvoir resélectionner les mêmes fichiers
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
   };
 
   const handleUploadImages = async () => {
@@ -58,10 +98,28 @@ export default function ImageUpload({ images, onImagesChange, availableColors }:
     setUploading(true);
     
     try {
-      const uploadPromises = imagesToUpload.map(async (img) => {
+      alert(`Début upload de ${imagesToUpload.length} image(s)`);
+      
+      const uploadPromises = imagesToUpload.map(async (img, index) => {
         if (!img.file) return img;
         
-        const uploaded = await uploadImage(img.file, 'products');
+        // Upload vers l'API locale
+        const formData = new FormData();
+        formData.append('file', img.file);
+        formData.append('folder', 'products');
+
+        const response = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Erreur lors de l\'upload');
+        }
+
+        const uploaded = await response.json();
+        alert(`Image ${index + 1} uploadée:\nURL: ${uploaded.url}\nPath: ${uploaded.path}`);
+        
         return {
           ...img,
           url: uploaded.url,
@@ -72,6 +130,7 @@ export default function ImageUpload({ images, onImagesChange, availableColors }:
       });
 
       const uploadedImages = await Promise.all(uploadPromises);
+      alert(`Toutes les images uploadées:\n${uploadedImages.map((img, i) => `${i+1}. URL: ${img.url}`).join('\n')}`);
       
       // Remplacer les images uploadées dans la liste
       const updatedImages = images.map(img => {
@@ -79,6 +138,8 @@ export default function ImageUpload({ images, onImagesChange, availableColors }:
         return uploaded || img;
       });
 
+      alert(`Images finales après update:\n${updatedImages.map((img, i) => `${i+1}. URL: ${img.url || 'VIDE'}`).join('\n')}`);
+      
       onImagesChange(updatedImages);
 
       toast({
@@ -87,6 +148,7 @@ export default function ImageUpload({ images, onImagesChange, availableColors }:
       });
     } catch (error) {
       console.error('Error uploading images:', error);
+      alert(`Erreur d'upload: ${error}`);
       toast({
         variant: 'destructive',
         title: 'Erreur',
@@ -99,12 +161,6 @@ export default function ImageUpload({ images, onImagesChange, availableColors }:
 
   const handleRemoveImage = (index: number) => {
     const newImages = [...images];
-    
-    // Révoquer l'URL de preview si elle existe
-    if (newImages[index].preview) {
-      URL.revokeObjectURL(newImages[index].preview!);
-    }
-    
     newImages.splice(index, 1);
     onImagesChange(newImages);
   };
@@ -114,8 +170,6 @@ export default function ImageUpload({ images, onImagesChange, availableColors }:
     newImages[index].color = color;
     onImagesChange(newImages);
   };
-
-  const pendingUploads = images.filter(img => img.file && !img.url).length;
 
   return (
     <div className="space-y-4">
@@ -128,26 +182,18 @@ export default function ImageUpload({ images, onImagesChange, availableColors }:
             multiple
             onChange={handleFileSelect}
             className="hidden"
+            disabled={uploading}
           />
           <Button
             type="button"
             variant="outline"
             onClick={() => fileInputRef.current?.click()}
-          >
-            <Upload className="mr-2 h-4 w-4" />
-            Sélectionner des images
-          </Button>
-        </div>
-        
-        {pendingUploads > 0 && (
-          <Button
-            type="button"
-            onClick={handleUploadImages}
             disabled={uploading}
           >
-            {uploading ? 'Upload en cours...' : `Uploader ${pendingUploads} image(s)`}
+            <Upload className="mr-2 h-4 w-4" />
+            {uploading ? 'Upload en cours...' : 'Sélectionner et uploader des images'}
           </Button>
-        )}
+        </div>
       </div>
 
       {images.length === 0 ? (
@@ -163,7 +209,7 @@ export default function ImageUpload({ images, onImagesChange, availableColors }:
             <div key={index} className="relative group border rounded-lg p-2 space-y-2">
               <div className="relative aspect-square bg-muted rounded overflow-hidden">
                 <Image
-                  src={image.preview || image.url}
+                  src={image.url}
                   alt={`Image ${index + 1}`}
                   fill
                   className="object-cover"
@@ -177,11 +223,6 @@ export default function ImageUpload({ images, onImagesChange, availableColors }:
                 >
                   <X className="h-4 w-4" />
                 </Button>
-                {image.file && !image.url && (
-                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                    <span className="text-white text-xs">En attente d'upload</span>
-                  </div>
-                )}
               </div>
               
               <div>

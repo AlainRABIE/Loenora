@@ -37,7 +37,7 @@
     "ProductPage": {
         "reviews": "({count} reviews)",
         "colors": "Colors",
-        "freeShipping": "Free shipping on orders over $50",
+        "shipping": "Shipping 8 dt",
         "warranty": "2-Year manufacturer warranty",
         "youMightAlsoLike": "You might also like",
         "addToCart": "Add to Cart",

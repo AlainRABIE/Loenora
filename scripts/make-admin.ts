@@ -11,8 +11,12 @@
  * 
  * Alternative (RECOMMANDÉ): Utilisez la console Firebase directement
  * - console.firebase.google.com > Firestore > Collection users > Modifier le champ role
+ * 
+ * Note: Ce fichier génère des erreurs TypeScript car firebase-admin n'est pas installé.
+ * C'est normal - ce script est optionnel et non utilisé par l'application.
  */
 
+// @ts-nocheck
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';

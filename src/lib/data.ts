@@ -27,7 +27,8 @@ export const products: Product[] = [
     id: 'prod_2',
     name: 'Capes jacket',
     description: 'Une cape jacket chic et polyvalente, idéale pour superposer vos tenues avec style.',
-    price: 85,
+    price: 82,
+    originalPrice: 92,
     category: 'Vestes',
     images: [
       // Marron

@@ -37,7 +37,7 @@
     "ProductPage": {
         "reviews": "({count} avis)",
         "colors": "Couleurs",
-        "freeShipping": "Livraison gratuite pour les commandes de plus de 50 $",
+        "shipping": "Livraison à 8 dt",
         "warranty": "Garantie fabricant de 2 ans",
         "youMightAlsoLike": "Vous pourriez aussi aimer",
         "addToCart": "Ajouter au panier",

@@ -68,7 +68,7 @@ export default function CheckoutPage() {
     },
   });
 
-  const shippingCost = cartTotal > 50 ? 0 : 9.99;
+  const shippingCost = 8;
   const total = cartTotal + shippingCost;
 
   async function onSubmit(values: z.infer<typeof checkoutSchema>) {
