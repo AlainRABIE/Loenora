@@ -59,6 +59,8 @@
     },
     "AccountPage": {
         "loading": "Chargement...",
+        "noOrders": "Aucune commande pour le moment",
+        "startShopping": "Commencer vos achats",
         "title": "Mon Compte",
         "orderHistory": "Historique des commandes",
         "orderHistoryDescription": "Consultez vos commandes passées et leur statut.",

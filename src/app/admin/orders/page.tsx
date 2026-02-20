@@ -69,8 +69,8 @@ export default function AdminOrdersPage() {
   const [selectedOrder, setSelectedOrder] = useState<OrderData | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  // Vérifier si l'utilisateur est admin (à personnaliser selon votre logique)
-  const isAdmin = user?.email === 'admin@loenora.com' || user?.email?.endsWith('@admin.com');
+  // Utiliser le rôle admin du contexte utilisateur
+  const { isAdmin } = useUser();
 
   useEffect(() => {
     if (!userLoading && !user) {
@@ -105,7 +105,7 @@ export default function AdminOrdersPage() {
       }
     };
 
-    if (!userLoading && isAdmin) {
+    if (!userLoading) {
       fetchOrders();
     }
   }, [isAdmin, userLoading, toast]);
